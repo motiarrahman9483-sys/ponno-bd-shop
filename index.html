@@ -178,9 +178,9 @@ function toBangla(number) {
 
 // ২. অটোমেটিক দাম ক্যালকুলেশন করার ফাংশন
 function calculateTotal(shipping) {
-    const productPrice = 1150; 
-    const total = productPrice + shipping;
-    
+     const priceText = document.getElementById('product-price-display').innerText;
+        const productPrice = parseInt(priceText) || 0;
+        const total = productPrice + shipping;
     // টেক্সটগুলো বাংলায় সেট করা
     if(document.getElementById('delivery-charge')){
         document.getElementById('delivery-charge').innerText = "৳" + toBangla(shipping);
@@ -231,6 +231,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html> 
+
 
 
 
