@@ -202,16 +202,18 @@ function toBangla(number) {
 }
 
 // সাইট খোলার সাথে সাথে অটোমেটিক ঢাকার চার্জ ৬০ ধরে হিসাব রান করবে
- window.onload = function() {
-    calculateTotal(60); 
+  window.onload = function() {
+    if(typeof calculateTotal === "function") {
+        calculateTotal(60); 
+    }
 };
 
+// অর্ডার সাবমিট করার মেইন কোড
 document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     e.preventDefault();
     let myForm = document.getElementById('checkoutForm');
     let formData = new FormData(myForm);
     
-    // শিপিং এরিয়া এবং বিল সংগ্রহ
     let shippingVal = document.querySelector('input[name="delivery"]:checked').value;
     formData.append('Delivery_Area', (shippingVal == "60") ? "ঢাকার ভিতরে" : "ঢাকার বাইরে");
     formData.append('Total_Bill', document.getElementById('total-price').innerText);
@@ -222,15 +224,12 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
         body: new URLSearchParams(formData).toString(),
     })
     .then(() => {
-        // অভিনন্দন মেসেজ দেখানো
         document.getElementById('success-overlay').style.display = 'flex';
         myForm.reset(); 
-        // ৪ সেকেন্ড পর অটো রিফ্রেশ
         setTimeout(() => { window.location.reload(); }, 4000); 
     })
     .catch(() => alert("দুঃখিত, আবার চেষ্টা করুন।"));
 });
-}); 
 </script>
 
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center; backdrop-filter: blur(8px);">
@@ -238,8 +237,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
         <div style="font-size:70px; margin-bottom:15px;">🎉</div>
         <h2 style="color:#00a884; font-size:28px; margin-bottom:10px;">অর্ডার সফল হয়েছে!</h2>
         <p style="font-size:18px; color:#333; font-weight:bold;">অভিনন্দন! আপনার অর্ডারটি আমরা পেয়েছি।</p>
-        <p style="color:#666; margin-top:10px;">অল্পক্ষণের মধ্যেই আমাদের প্রতিনিধি কল করবেন।</p>
-        <p style="color:#00a884; margin-top:15px; font-size:14px;">অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
+        <p style="color:#666; margin-top:10px;">অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
     </div>
 </div>
 
@@ -254,44 +252,10 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
         </a>
     </div>
-    <p style="font-size: 16px; color: #333; font-weight: bold; background: linear-gradient(90deg, #00a884, #25d366); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px;">পণ্য বিডি - সবসময় আপনার পাশে</p>
+    <p style="font-size: 18px; color: #00a884; font-weight: bold; margin-bottom: 10px;">পণ্য বিডি - সবসময় আপনার পাশে</p>
     <p style="font-size: 13px; color: #888;">© ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত</p>
 </footer>
 
-<script>
-    // এই কোডটুকু ঢাকার ভাড়া (Inside/Outside) সচল করবে
-    window.onload = function() {
-        if(typeof calculateTotal === "function") {
-            calculateTotal(60); 
-        }
-    };
-</script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
