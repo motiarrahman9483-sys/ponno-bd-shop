@@ -209,18 +209,24 @@ function toBangla(number) {
     const totalEl = document.getElementById('total-price');
     if (totalEl) {
         totalEl.innerText = "৳ " + toBangla(total);
-    }
-}
-
-// সাইট খোলার সাথে সাথে অটোমেটিক ঢাকার চার্জ ৬০ ধরে হিসাব রান করবে
-  window.onload = function() {
-    if(typeof calculateTotal === "function") {
-        calculateTotal(60); 
-    }
-};
-  function calculateTotal(charge) {
-    const productPrice = 1050; // তোর আসল প্রোডাক্টের দাম ১০৫০ টাকা
+ function calculateTotal(charge) {
+    const productPrice = 1050; 
     const total = productPrice + charge;
+
+    // স্ক্রিনে দেখানোর জন্য
+    const deliveryEl = document.getElementById('delivery-charge');
+    const totalEl = document.getElementById('total-price');
+
+    if(deliveryEl) deliveryEl.innerText = toBangla(charge);
+    if(totalEl) totalEl.innerText = toBangla(total);
+
+    // ড্যাশবোর্ডে পাঠানোর জন্য
+    const dbDelivery = document.getElementById('db-delivery-charge');
+    const dbTotal = document.getElementById('db-total-bill');
+
+    if(dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
+    if(dbTotal) dbTotal.value = toBangla(total) + " টাকা";
+}
 
     // ১. সাইটে বাংলায় দেখানোর জন্য
     if(document.getElementById('delivery-charge')) document.getElementById('delivery-charge').innerText = toBangla(charge);
@@ -280,6 +286,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
