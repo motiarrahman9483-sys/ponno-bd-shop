@@ -64,7 +64,7 @@
     </div>
     
     <div style="font-size: 28px; color: #b71c1c; font-weight: 900; margin-bottom: 10px;">
-         আজকের অফার প্রাইস: <span id="unit-price">১০৫০</span> টাকা
+          আজকের অফার প্রাইস: <span id="product-price-display">১০৫০</span> টাকা
     </div>
     
     <div style="background: #ffd700; color: #000; display: inline-block; padding: 5px 15px; border-radius: 50px; font-weight: 800; font-size: 14px; animation: pulse 1.5s infinite;">
@@ -178,15 +178,20 @@ function toBangla(number) {
 
 // ২. অটোমেটিক দাম ক্যালকুলেশন করার ফাংশন
 function calculateTotal(shipping) {
-     const priceText = document.getElementById('product-price-display').innerText;
-        const productPrice = parseInt(priceText) || 0;
-        const total = productPrice + shipping;
-    // টেক্সটগুলো বাংলায় সেট করা
-    if(document.getElementById('delivery-charge')){
-        document.getElementById('delivery-charge').innerText = "৳" + toBangla(shipping);
-    }
-     document.getElementById('total-price').innerText = toBangla(total);
+      const priceText = document.getElementById('product-price-display').innerText;
+    // বাংলা সংখ্যাকে ইংরেজিতে কনভার্ট করে হিসাব করার জন্য:
+    const productPrice = parseInt(priceText.replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d))) || 0;
+    
+    const total = productPrice + shipping;
 
+    // ডেলিভারি চার্জ আপডেট
+    if(document.getElementById('delivery-charge')){
+        document.getElementById('delivery-charge').innerText = "৳ " + toBangla(shipping);
+    }
+    // সর্বমোট দাম আপডেট
+    if(document.getElementById('total-price')){
+        document.getElementById('total-price').innerText = toBangla(total);
+    }
 // ৩. হোয়াটসঅ্যাপে অর্ডার ডাটা পাঠানোর মেইন কোড
 document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
@@ -228,6 +233,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html> 
+
 
 
 
