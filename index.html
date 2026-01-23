@@ -209,17 +209,17 @@ function toBangla(number) {
         calculateTotal(60); 
     }
 };
- function calculateTotal(charge) {
-    const productPrice = 1050; // এখানে দাম ঠিক করে দিলাম
+  function calculateTotal(charge) {
+    const productPrice = 1050; // তোর আসল প্রোডাক্টের দাম ১০৫০ টাকা
     const total = productPrice + charge;
 
-    // স্ক্রিনে বাংলা দেখানোর জন্য (toBangla ফাংশন ব্যবহার করে)
-    document.getElementById('delivery-charge').innerText = toBangla(charge);
-    document.getElementById('total-price').innerText = toBangla(total);
+    // ১. সাইটে বাংলায় দেখানোর জন্য
+    if(document.getElementById('delivery-charge')) document.getElementById('delivery-charge').innerText = toBangla(charge);
+    if(document.getElementById('total-price')) document.getElementById('total-price').innerText = toBangla(total);
 
-    // ড্যাশবোর্ডে ডাটা পাঠানোর জন্য (এগুলো ইংলিশেই থাকাই ভালো)
-    document.getElementById('db-delivery-charge').value = charge + " টাকা";
-    document.getElementById('db-total-bill').value = total + " টাকা";
+    // ২. নেটলিফাই ড্যাশবোর্ডে ডাটা পাঠানোর জন্য (তোর হিডেন ইনপুটগুলোর আইডি অনুযায়ী)
+    if(document.getElementById('db-delivery-charge')) document.getElementById('db-delivery-charge').value = toBangla(charge) + " টাকা";
+    if(document.getElementById('db-total-bill')) document.getElementById('db-total-bill').value = toBangla(total) + " টাকা";
 }
 // অর্ডার সাবমিট করার মেইন কোড
 document.getElementById('checkoutForm').addEventListener('submit', function(e) {
@@ -271,6 +271,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
