@@ -177,21 +177,28 @@ function toBangla(number) {
 }
 
 // ২. অটোমেটিক দাম ক্যালকুলেশন করার ফাংশন
-function calculateTotal(shipping) {
-      const priceText = document.getElementById('product-price-display').innerText;
-    // বাংলা সংখ্যাকে ইংরেজিতে কনভার্ট করে হিসাব করার জন্য:
+ function calculateTotal(shipping) {
+    const priceElement = document.getElementById('product-price-display');
+    if (!priceElement) return;
+
+    const priceText = priceElement.innerText;
+    // বাংলা সংখ্যাকে ইংরেজিতে কনভার্ট করে হিসাব করার সঠিক কোড:
     const productPrice = parseInt(priceText.replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d))) || 0;
     
     const total = productPrice + shipping;
 
     // ডেলিভারি চার্জ আপডেট
-    if(document.getElementById('delivery-charge')){
-        document.getElementById('delivery-charge').innerText = "৳ " + toBangla(shipping);
+    const delChargeEl = document.getElementById('delivery-charge');
+    if (delChargeEl) {
+        delChargeEl.innerText = "৳ " + toBangla(shipping);
     }
+
     // সর্বমোট দাম আপডেট
-    if(document.getElementById('total-price')){
-        document.getElementById('total-price').innerText = toBangla(total);
+    const totalPriceEl = document.getElementById('total-price');
+    if (totalPriceEl) {
+        totalPriceEl.innerText = toBangla(total);
     }
+}
 // ৩. হোয়াটসঅ্যাপে অর্ডার ডাটা পাঠানোর মেইন কোড
 document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
@@ -233,6 +240,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html> 
+
 
 
 
