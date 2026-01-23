@@ -160,41 +160,4 @@
     </a>
 </footer>
 
-<script>
-function toBangla(number) {
-    const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-    return number.toString().replace(/\d/g, d => banglaDigits[d]);
-}
-
-function calculateTotal(shipping) {
-    const productPrice = 1150;
-    const total = productPrice + shipping;
-    document.getElementById('delivery-charge').innerText = "৳" + toBangla(shipping);
-    document.getElementById('total-price').innerText = "৳" + toBangla(total);
-}
-
-document.getElementById('checkoutForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    let name = document.getElementById('custName').value;
-    let phone = document.getElementById('custPhone').value;
-    let address = document.getElementById('custAddress').value;
-    let shippingVal = document.querySelector('input[name="delivery"]:checked').value;
-    let deliveryArea = shippingVal == "60" ? "ঢাকার ভিতরে" : "ঢাকার বাইরে";
-    let total = document.getElementById('total-price').innerText;
-
-    let message = `নতুন অর্ডার এসেছে!%0A----------------------%0Aনাম: ${name}%0Aফোন: ${phone}%0Aঠিকানা: ${address}%0Aডেলিভারি এলাকা: ${deliveryArea}%0Aসর্বমোট: ${total}%0A----------------------`;
-    
-    window.open(`https://wa.me/8801875181134?text=${message}`, '_blank');
-});
-</script>
-
-</div>
-
-    <div style="font-size: 12px; color: #888;">
-        <p>© ২০২৬ Ponno BD - সব সময় আপনার পাশে</p>
-    </div>
-</footer>
-<div style="font-size: 12px; opacity: 0.8;">
-        <p>© ২০২৬ Ponno BD - সর্বস্বত্ব সংরক্ষিত</p>
-    </div>
-</footer>
+ 
