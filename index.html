@@ -209,30 +209,22 @@ function toBangla(number) {
     const totalEl = document.getElementById('total-price');
     if (totalEl) {
         totalEl.innerText = "৳ " + toBangla(total);
-    function calculateTotal(charge) {
-    const productPrice = 1050; // ১০০০৫০ এর জায়গায় ১০৫০ ঠিক করে দিলাম
+     function calculateTotal(charge) {
+    const productPrice = 1050; 
     const total = productPrice + charge;
 
-    // ১. সাইটে বাংলায় বিল দেখানোর জন্য (যদি আইডি থাকে)
-    if(document.getElementById('delivery-charge')) {
-        document.getElementById('delivery-charge').innerText = toBangla(charge);
-    }
-    if(document.getElementById('total-price')) {
-        document.getElementById('total-price').innerText = toBangla(total);
-    }
+    // সাইটের বিল আপডেট করা
+    const deliveryDisplay = document.getElementById('delivery-charge');
+    const totalDisplay = document.getElementById('total-price');
+    if (deliveryDisplay) deliveryDisplay.innerText = toBangla(charge);
+    if (totalDisplay) totalDisplay.innerText = toBangla(total);
 
-    // ২. ড্যাশবোর্ডে ডাটা পাঠানোর জন্য আপডেট
-    if(document.getElementById('db-delivery-charge')) {
-        document.getElementById('db-delivery-charge').value = toBangla(charge) + " টাকা";
-    }
-    if(document.getElementById('db-total-bill')) {
-        document.getElementById('db-total-bill').value = toBangla(total) + " টাকা";
-    }
+    // ড্যাশবোর্ডের হিডেন ডাটা আপডেট করা
+    const dbDelivery = document.getElementById('db-delivery-charge');
+    const dbTotal = document.getElementById('db-total-bill');
+    if (dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
+    if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
 }
-    let shippingVal = document.querySelector('input[name="delivery"]:checked').value;
-    formData.append('Delivery_Area', (shippingVal == "60") ? "ঢাকার ভিতরে" : "ঢাকার বাইরে");
-    formData.append('Total_Bill', document.getElementById('total-price').innerText);
-
     fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -273,6 +265,7 @@ function toBangla(number) {
 
 </body>
 </html>
+
 
 
 
