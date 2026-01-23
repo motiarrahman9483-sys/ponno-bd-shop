@@ -209,23 +209,21 @@ function toBangla(number) {
     const totalEl = document.getElementById('total-price');
     if (totalEl) {
         totalEl.innerText = "৳ " + toBangla(total);
- function calculateTotal(charge) {
+  function calculateTotal(charge) {
     const productPrice = 1050; 
     const total = productPrice + charge;
 
-    // স্ক্রিনে দেখানোর জন্য
-    const deliveryEl = document.getElementById('delivery-charge');
-    const totalEl = document.getElementById('total-price');
+    // স্ক্রিনে বাংলায় দেখানোর জন্য
+    const dCharge = document.getElementById('delivery-charge');
+    const tPrice = document.getElementById('total-price');
+    if(dCharge) dCharge.innerText = toBangla(charge);
+    if(tPrice) tPrice.innerText = toBangla(total);
 
-    if(deliveryEl) deliveryEl.innerText = toBangla(charge);
-    if(totalEl) totalEl.innerText = toBangla(total);
-
-    // ড্যাশবোর্ডে পাঠানোর জন্য
-    const dbDelivery = document.getElementById('db-delivery-charge');
-    const dbTotal = document.getElementById('db-total-bill');
-
-    if(dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
-    if(dbTotal) dbTotal.value = toBangla(total) + " টাকা";
+    // ড্যাশবোর্ডে পাঠানোর জন্য ডাটা আপডেট
+    const dbD = document.getElementById('db-delivery-charge');
+    const dbT = document.getElementById('db-total-bill');
+    if(dbD) dbD.value = toBangla(charge) + " টাকা";
+    if(dbT) dbT.value = toBangla(total) + " টাকা";
 }
 
     // ১. সাইটে বাংলায় দেখানোর জন্য
@@ -286,6 +284,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
