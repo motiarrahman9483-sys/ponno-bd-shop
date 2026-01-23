@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রিমিয়াম প্রোডাক্ট - Ponno BD</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; line-height: 1.6; }
+        .container { max-width: 700px; margin: auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        
+        /* উপরের সেকশন */
+        .product-header { text-align: center; padding-top: 20px; }
+        .product-title { font-size: 28px; color: #b71c1c; margin-bottom: 15px; font-weight: bold; }
+        .main-img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
+
+        /* স্টিকি বা জাম্প বাটন */
+        .jump-btn { display: block; background: #d63031; color: white; text-align: center; padding: 18px; text-decoration: none; font-size: 22px; font-weight: bold; border-radius: 50px; margin: 20px 0; animation: pulse 1.5s infinite; }
+
+        /* বিস্তারিত লেখার সেকশন */
+        .details-section { padding: 20px; background: #fff; text-align: left; border-top: 2px solid #eee; }
+        .details-section h2 { color: #1a237e; border-bottom: 2px solid #1a237e; display: inline-block; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        .feature-list li::before { content: '✅'; position: absolute; left: 0; }
+
+        /* অর্ডার ফর্ম */
+        .order-form-container { background: #f1f2f6; padding: 30px 20px; border-radius: 15px; margin-top: 40px; border: 2px solid #d63031; }
+        .form-title { color: #d63031; font-size: 24px; margin-bottom: 20px; text-align: center; }
+        input, textarea, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
+        .confirm-btn { background: #28a745; color: white; border: none; padding: 18px; width: 100%; border-radius: 5px; font-size: 22px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .confirm-btn:hover { background: #218838; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        html { scroll-behavior: smooth; } /* বাটন ক্লিক করলে স্মুথলি নিচে যাওয়ার জন্য */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="product-header">
+        <h1 class="product-title">এখানে আপনার পণ্যের বড় আকর্ষনীয় নাম লিখুন</h1>
+        <img src="https://via.placeholder.com/600x400.png?text=Main+Product+Image" alt="Product Image" class="main-img">
+        
+        <a href="#order-form-area" class="jump-btn">অর্ডার করতে এখানে ক্লিক করুন</a>
+    </div>
+
+    <div class="details-section">
+        <h2>পণ্যের বিস্তারিত ও উপকারিতা:</h2>
+        <p>এখানে আপনার পণ্য সম্পর্কে বিস্তারিত ২-৩ প্যারা লিখুন। এটি কেন ভালো, কাস্টমার কেন কিনবে—সব এখানে বুঝিয়ে লিখুন।</p>
+        
+        <ul class="feature-list">
+            <li>১০০% প্রিমিয়াম কোয়ালিটি নিশ্চিত।</li>
+            <li>ব্যবহার করা খুবই সহজ এবং নিরাপদ।</li>
+            <li>আমাদের পণ্যটি টেকসই এবং মজবুত।</li>
+            <li>পণ্য হাতে পেয়ে চেক করে টাকা দেওয়ার সুযোগ।</li>
+        </ul>
+
+        <h2>ব্যবহার বিধি বা সতর্কতা:</h2>
+        <p>আপনার পণ্যের কোনো বিশেষ নিয়ম থাকলে এখানে লিখে দিতে পারেন। এতে কাস্টমারের আস্থা বাড়ে।</p>
+    </div>
+
+    <div id="order-form-area" class="order-form-container">
+        <h2 class="form-title">অর্ডার কনফার্ম করতে নিচের ফর্মটি পূরণ করুন</h2>
+        <form>
+            <input type="text" placeholder="আপনার নাম লিখুন" required>
+            <input type="text" placeholder="আপনার মোবাইল নম্বর লিখুন" required>
+            <textarea rows="3" placeholder="আপনার পূর্ণাঙ্গ ঠিকানা (গ্রাম/রাস্তা, থানা, জেলা) লিখুন" required></textarea>
+            
+            <p style="margin-bottom: 5px; font-weight: bold;">ডেলিভারি এরিয়া সিলেক্ট করুন:</p>
+            <select>
+                <option value="80">ঢাকার ভিতরে (৮০ টাকা)</option>
+                <option value="150">ঢাকার বাইরে (১৫০ টাকা)</option>
+            </select>
+
+            <button type="submit" class="confirm-btn">অর্ডার কনফার্ম করুন</button>
+        </form>
+    </div>
+
+    <footer style="text-align: center; padding: 30px; color: #888;">
+        &copy; 2026 Ponno BD. All rights reserved.
+    </footer>
+</div>
+
+</body>
+</html>
