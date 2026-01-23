@@ -185,10 +185,7 @@ function calculateTotal(shipping) {
     if(document.getElementById('delivery-charge')){
         document.getElementById('delivery-charge').innerText = "৳" + toBangla(shipping);
     }
-    if(document.getElementById('total-price')){
-        document.getElementById('total-price').innerText = "৳" + toBangla(total);
-    }
-}
+     document.getElementById('total-price').innerText = toBangla(total);
 
 // ৩. হোয়াটসঅ্যাপে অর্ডার ডাটা পাঠানোর মেইন কোড
 document.getElementById('checkoutForm').addEventListener('submit', function(e) {
@@ -231,6 +228,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html> 
+
 
 
 
