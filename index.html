@@ -154,11 +154,12 @@
             <div style="display: flex; justify-content: space-between; font-size: 18px;">
                 <span>ডেলিভারি চার্জ:</span>
                 <span id="delivery-charge">৳৬০</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 22px; font-weight: bold; color: #b71c1c; margin-top: 5px;">
-                <span>সর্বমোট:</span>
-                <span id="total-price">৳১২১০</span>
-            </div>
+             <span id="delivery-charge">৬০</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 22px; font-weight: bold; margin-top: 10px;">
+    <span>সর্বমোট:</span>
+    <span id="total-price">০</span>
+</div>
         </div>
 
         <button type="submit" style="width: 100%; background: #27ae60; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer;">অর্ডার কনফার্ম করুন</button>
@@ -176,22 +177,29 @@ function toBangla(number) {
     return number.toString().replace(/\d/g, d => banglaDigits[d]);
 }
 
-// ২. অটোমেটিক দাম ক্যালকুলেশন করার ফাংশন
  function calculateTotal(shipping) {
     const priceElement = document.getElementById('product-price-display');
     if (!priceElement) return;
 
     const priceText = priceElement.innerText;
-    // বাংলা সংখ্যাকে ইংরেজিতে কনভার্ট করে হিসাব করার সঠিক কোড:
+    // বাংলা সংখ্যাকে ইংরেজিতে কনভার্ট করে অংক করার সঠিক নিয়ম:
     const productPrice = parseInt(priceText.replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d))) || 0;
     
     const total = productPrice + shipping;
 
-    // ডেলিভারি চার্জ আপডেট
-    const delChargeEl = document.getElementById('delivery-charge');
-    if (delChargeEl) {
-        delChargeEl.innerText = "৳ " + toBangla(shipping);
+    // ডেলিভারি চার্জ ও সর্বমোট আপডেট করা
+    if(document.getElementById('delivery-charge')) {
+        document.getElementById('delivery-charge').innerText = toBangla(shipping);
     }
+    if(document.getElementById('total-price')) {
+        document.getElementById('total-price').innerText = "৳ " + toBangla(total);
+    }
+}
+
+// সাইটে ঢোকার সাথে সাথে ঢাকার চার্জ ৬০ ধরে অটো হিসাব করবে
+window.onload = function() {
+    calculateTotal(60);
+};
 
     // সর্বমোট দাম আপডেট
     const totalPriceEl = document.getElementById('total-price');
@@ -240,6 +248,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html> 
+
 
 
 
