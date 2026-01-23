@@ -140,9 +140,9 @@
 <input type="tel" name="phone" id="custPhone" required placeholder="মোবাইল নাম্বার লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
  
          <textarea name="address" id="custAddress" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"></textarea>
-  <input type="hidden" name="Product_Price" value="990 টাকা">
-<input type="hidden" name="Delivery_Charge" id="db-delivery-charge" value="60 টাকা">
-<input type="hidden" name="Total_Bill" id="db-total-bill" value="1050 টাকা">
+  <input type="hidden" name="পণ্য_মূল্য" value="১০৫০ টাকা">
+<input type="hidden" name="ডেলিভারি_চার্জ" id="db-delivery-charge" value="৬০ টাকা">
+<input type="hidden" name="সর্বমোট_বিল" id="db-total-bill" value="১১১০ টাকা">
 
     // ১. সাইটে বাংলায় দেখানোর জন্য
     if(document.getElementById('delivery-charge')) document.getElementById('delivery-charge').innerText = toBangla(charge);
@@ -286,6 +286,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
