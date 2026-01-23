@@ -209,30 +209,26 @@ function toBangla(number) {
     const totalEl = document.getElementById('total-price');
     if (totalEl) {
         totalEl.innerText = "৳ " + toBangla(total);
-   function calculateTotal(charge) {
-    const productPrice = 1050; 
+    function calculateTotal(charge) {
+    const productPrice = 1050; // ১০০০৫০ এর জায়গায় ১০৫০ ঠিক করে দিলাম
     const total = productPrice + charge;
 
-    // ১. সাইটে বাংলায় বিল দেখানোর জন্য
-    const dCharge = document.getElementById('delivery-charge');
-    const tPrice = document.getElementById('total-price');
-    if(dCharge) dCharge.innerText = toBangla(charge);
-    if(tPrice) tPrice.innerText = toBangla(total);
+    // ১. সাইটে বাংলায় বিল দেখানোর জন্য (যদি আইডি থাকে)
+    if(document.getElementById('delivery-charge')) {
+        document.getElementById('delivery-charge').innerText = toBangla(charge);
+    }
+    if(document.getElementById('total-price')) {
+        document.getElementById('total-price').innerText = toBangla(total);
+    }
 
-    // ২. নেটলিফাই ড্যাশবোর্ডে পাঠানোর জন্য ডাটা আপডেট
-    const dbD = document.getElementById('db-delivery-charge');
-    const dbT = document.getElementById('db-total-bill');
-    if(dbD) dbD.value = toBangla(charge) + " টাকা";
-    if(dbT) dbT.value = toBangla(total) + " টাকা";
+    // ২. ড্যাশবোর্ডে ডাটা পাঠানোর জন্য আপডেট
+    if(document.getElementById('db-delivery-charge')) {
+        document.getElementById('db-delivery-charge').value = toBangla(charge) + " টাকা";
+    }
+    if(document.getElementById('db-total-bill')) {
+        document.getElementById('db-total-bill').value = toBangla(total) + " টাকা";
+    }
 }
-
-// এই বাড়তি লাইনগুলো যদি নিচে থাকে তবে সেগুলোও মুছে পরিষ্কার করে ফেলবি
-// অর্ডার সাবমিট করার মেইন কোড
-document.getElementById('checkoutForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    let myForm = document.getElementById('checkoutForm');
-    let formData = new FormData(myForm);
-    
     let shippingVal = document.querySelector('input[name="delivery"]:checked').value;
     formData.append('Delivery_Area', (shippingVal == "60") ? "ঢাকার ভিতরে" : "ঢাকার বাইরে");
     formData.append('Total_Bill', document.getElementById('total-price').innerText);
@@ -277,6 +273,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
