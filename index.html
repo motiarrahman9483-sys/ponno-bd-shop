@@ -230,7 +230,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     })
     .catch(() => alert("দুঃখিত, আবার চেষ্টা করুন।"));
 });
- }); 
+}); 
 </script>
 
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center; backdrop-filter: blur(8px);">
@@ -244,10 +244,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 </div>
 
 <style>
-@keyframes popIn { 
-    0% { transform: scale(0); opacity: 0; } 
-    100% { transform: scale(1); opacity: 1; } 
-}
+@keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 </style>
 
 <footer style="background: #f8f9fa; padding: 40px 15px; text-align: center; border-top: 1px solid #eee; margin-top: 50px;">
@@ -257,21 +254,21 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
         </a>
     </div>
+    <p style="font-size: 16px; color: #333; font-weight: bold; background: linear-gradient(90deg, #00a884, #25d366); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px;">পণ্য বিডি - সবসময় আপনার পাশে</p>
     <p style="font-size: 13px; color: #888;">© ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত</p>
 </footer>
 
 <script>
-    // সাইট খোলার সাথে সাথে অটোমেটিক ঢাকার ভাড়া সেট হবে
+    // এই কোডটুকু ঢাকার ভাড়া (Inside/Outside) সচল করবে
     window.onload = function() {
         if(typeof calculateTotal === "function") {
-            calculateTotal(60);
+            calculateTotal(60); 
         }
     };
 </script>
 
 </body>
 </html>
-
 
 
 
