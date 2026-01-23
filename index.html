@@ -92,7 +92,7 @@
         <p style="margin: 5px 0;">🌈 ৭টি ভিন্ন রঙের RGB লাইট</p>
     </div>
 
- <div id="order-form" style="max-width: 600px; margin: 30px auto; padding: 20px; border: 2px solid #b71c1c; border-radius: 15px; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+  <div id="order-form" style="max-width: 600px; margin: 30px auto; padding: 20px; border: 2px solid #b71c1c; border-radius: 15px; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-family: 'Arial', sans-serif;">
     
     <h3 style="text-align: center; color: #b71c1c; background: #fdf2f2; padding: 10px; border-radius: 8px;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
 
@@ -125,15 +125,15 @@
         <div style="border-top: 2px dashed #ddd; padding-top: 15px; margin-bottom: 20px;">
             <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                 <span>প্রোডাক্টের দাম:</span>
-                <span style="font-weight: bold;">৳১১৫০.০০</span>
+                <span style="font-weight: bold;">৳১১৫০</span>
             </div>
             <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                 <span>ডেলিভারি চার্জ:</span>
-                <span id="delivery-charge" style="font-weight: bold;">৳৬০.০০</span>
+                <span id="delivery-charge" style="font-weight: bold;">৳৬০</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 22px; color: #b71c1c; font-weight: 900; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
                 <span>সর্বমোট:</span>
-                <span id="total-price">৳১২১০.০০</span>
+                <span id="total-price">৳১২১০</span>
             </div>
         </div>
 
@@ -144,11 +144,19 @@
 </div>
 
 <script>
+// ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ফাংশন
+function toBangla(number) {
+    const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+    return number.toString().replace(/\d/g, d => banglaDigits[d]);
+}
+
 function calculateTotal(shipping) {
     const productPrice = 1150;
     const total = productPrice + shipping;
-    document.getElementById('delivery-charge').innerText = "৳" + shipping + ".00";
-    document.getElementById('total-price').innerText = "৳" + total + ".00";
+    
+    // টেক্সটগুলো বাংলায় সেট করা হচ্ছে
+    document.getElementById('delivery-charge').innerText = "৳" + toBangla(shipping);
+    document.getElementById('total-price').innerText = "৳" + toBangla(total);
 }
 </script>
 
