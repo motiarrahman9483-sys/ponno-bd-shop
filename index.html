@@ -140,9 +140,18 @@
 <input type="tel" name="phone" id="custPhone" required placeholder="মোবাইল নাম্বার লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
  
          <textarea name="address" id="custAddress" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"></textarea>
-<input type="hidden" name="Product_Price" value="990 টাকা">
-<input type="hidden" name="Delivery_Charge" id="db-delivery-charge" value="60 টাকা">
-<input type="hidden" name="Total_Bill" id="db-total-bill" value="1050 টাকা">
+ function calculateTotal(charge) {
+    const productPrice = 1050; // তোর আসল প্রোডাক্টের দাম ১০৫০ টাকা
+    const total = productPrice + charge;
+
+    // ১. সাইটে বাংলায় দেখানোর জন্য
+    if(document.getElementById('delivery-charge')) document.getElementById('delivery-charge').innerText = toBangla(charge);
+    if(document.getElementById('total-price')) document.getElementById('total-price').innerText = toBangla(total);
+
+    // ২. নেটলিফাই ড্যাশবোর্ডে ডাটা পাঠানোর জন্য (তোর হিডেন ইনপুটগুলোর আইডি অনুযায়ী)
+    if(document.getElementById('db-delivery-charge')) document.getElementById('db-delivery-charge').value = toBangla(charge) + " টাকা";
+    if(document.getElementById('db-total-bill')) document.getElementById('db-total-bill').value = toBangla(total) + " টাকা";
+}
         <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
              <p style="font-weight: bold; margin-bottom: 10px;">ডেলিভারি কোথায় নিতে চান এলাকা নির্বাচন করুন </p>
             <label style="display: block; margin-bottom: 8px;">
@@ -271,6 +280,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
