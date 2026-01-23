@@ -92,58 +92,65 @@
         <p style="margin: 5px 0;">🌈 ৭টি ভিন্ন রঙের RGB লাইট</p>
     </div>
 
-</div>
-<div id="order-form" style="max-width: 600px; margin: 30px auto; padding: 20px; border: 2px solid #b71c1c; border-radius: 15px; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+ <div id="order-form" style="max-width: 600px; margin: 30px auto; padding: 20px; border: 2px solid #b71c1c; border-radius: 15px; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
     
-    <h3 style="text-align: center; color: #b71c1c; background: #fdf2f2; padding: 10px; border-radius: 8px; margin-top: 0;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
+    <h3 style="text-align: center; color: #b71c1c; background: #fdf2f2; padding: 10px; border-radius: 8px;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
 
-    <form>
+    <form id="checkoutForm">
         <div style="margin-bottom: 15px;">
             <label style="display: block; font-weight: bold; margin-bottom: 5px;">আপনার নাম *</label>
-            <input type="text" placeholder="আপনার নাম লিখুন" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            <input type="text" required placeholder="আপনার নাম লিখুন" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
         </div>
 
         <div style="margin-bottom: 15px;">
             <label style="display: block; font-weight: bold; margin-bottom: 5px;">মোবাইল নাম্বার *</label>
-            <input type="tel" placeholder="১১ ডিজিটের মোবাইল নাম্বার লিখুন" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            <input type="tel" required placeholder="১১ ডিজিটের মোবাইল নাম্বার লিখুন" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
         </div>
 
         <div style="margin-bottom: 15px;">
             <label style="display: block; font-weight: bold; margin-bottom: 5px;">সম্পূর্ণ ঠিকানা *</label>
-            <textarea placeholder="আপনার বাসার নাম্বার, রোড নাম্বার এবং এলাকার নাম লিখুন" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; height: 80px;"></textarea>
+            <textarea required placeholder="বাসার নাম্বার, রোড এবং এলাকার নাম" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; height: 80px;"></textarea>
         </div>
 
         <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
             <p style="font-weight: bold; margin-top: 0;">শিপিং এলাকা নির্বাচন করুন:</p>
-            <label style="display: block; margin-bottom: 8px; cursor: pointer;">
-                <input type="radio" name="delivery" value="60" checked> ঢাকার ভিতরে: ৳৬০.০০
+            <label style="display: block; margin-bottom: 8px; cursor: pointer; font-weight: bold;">
+                <input type="radio" name="delivery" value="60" checked onclick="calculateTotal(60)"> ঢাকার ভিতরে: ৳৬০
             </label>
-            <label style="display: block; cursor: pointer;">
-                <input type="radio" name="delivery" value="120"> ঢাকার বাইরে: ৳১২০.০০
+            <label style="display: block; cursor: pointer; font-weight: bold;">
+                <input type="radio" name="delivery" value="120" onclick="calculateTotal(120)"> ঢাকার বাইরে: ৳১২০
             </label>
         </div>
 
         <div style="border-top: 2px dashed #ddd; padding-top: 15px; margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 5px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                 <span>প্রোডাক্টের দাম:</span>
-                <span>৳১১৫০.০০</span>
+                <span style="font-weight: bold;">৳১১৫০.০০</span>
             </div>
-            <div style="display: flex; justify-content: space-between; font-size: 20px; color: #b71c1c; font-weight: 900; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>ডেলিভারি চার্জ:</span>
+                <span id="delivery-charge" style="font-weight: bold;">৳৬০.০০</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 22px; color: #b71c1c; font-weight: 900; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
                 <span>সর্বমোট:</span>
-                <span>৳১৫১০.০০</span>
+                <span id="total-price">৳১২১০.০০</span>
             </div>
         </div>
 
-        <button type="submit" style="width: 100%; background: #27ae60; color: white; padding: 18px; border: none; border-radius: 10px; font-size: 22px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);">
-            অর্ডার কনফার্ম করুন ৳১৫১০.০০
+        <button type="submit" style="width: 100%; background: #27ae60; color: white; padding: 18px; border: none; border-radius: 10px; font-size: 22px; font-weight: bold; cursor: pointer;">
+            অর্ডার কনফার্ম করুন
         </button>
     </form>
-
-    <div style="text-align: center; margin-top: 15px; color: #666; font-size: 14px;">
-        ✅ ১০০% নিশ্চিত হয়ে অর্ডার করুন। পণ্য হাতে পেয়ে পেমেন্ট করার সুবিধা।
-    </div>
 </div>
 
+<script>
+function calculateTotal(shipping) {
+    const productPrice = 1150;
+    const total = productPrice + shipping;
+    document.getElementById('delivery-charge').innerText = "৳" + shipping + ".00";
+    document.getElementById('total-price').innerText = "৳" + total + ".00";
+}
+</script>
 
 
 
