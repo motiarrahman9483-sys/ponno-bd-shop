@@ -177,27 +177,28 @@ function toBangla(number) {
     return number.toString().replace(/\d/g, d => banglaDigits[d]);
 }
 
- function calculateTotal(shipping) {
+   function calculateTotal(shipping) {
     const priceElement = document.getElementById('product-price-display');
-    if (!priceElement) return;
+    if (!priceElement) return; 
 
     const priceText = priceElement.innerText;
-    // বাংলা সংখ্যাকে ইংরেজিতে কনভার্ট করে অংক করার সঠিক নিয়ম:
-    const productPrice = parseInt(priceText.replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d))) || 0;
+    // বাংলা সংখ্যাকে ইংরেজিতে নেওয়ার ১০০% নির্ভুল কোড
+    const productPrice = parseInt(priceText.replace(/[০-৯]/g, d => "0123456789"["০১২৩৪৫৬৭৮৯".indexOf(d)])) || 0;
     
     const total = productPrice + shipping;
 
-    // ডেলিভারি চার্জ ও সর্বমোট আপডেট করা
-    if(document.getElementById('delivery-charge')) {
+    if (document.getElementById('delivery-charge')) {
         document.getElementById('delivery-charge').innerText = toBangla(shipping);
     }
-    if(document.getElementById('total-price')) {
+    if (document.getElementById('total-price')) {
         document.getElementById('total-price').innerText = "৳ " + toBangla(total);
     }
 }
 
-// সাইটে ঢোকার সাথে সাথে ঢাকার চার্জ ৬০ ধরে অটো হিসাব করবে
+// সাইট খোলার সাথে সাথে অটো হিসাব হবে
 window.onload = function() {
+    calculateTotal(60); 
+};
     calculateTotal(60);
 };
 
@@ -248,6 +249,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html> 
+
 
 
 
