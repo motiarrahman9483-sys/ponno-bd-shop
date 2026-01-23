@@ -170,29 +170,43 @@
     </form>
 </div>
 
-<script>
-// ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ফাংশন
+ <script>
+// ১. ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ফাংশন
 function toBangla(number) {
     const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
     return number.toString().replace(/\d/g, d => banglaDigits[d]);
 }
 
+// ২. অটোমেটিক দাম হিসাব করার ফাংশন
 function calculateTotal(shipping) {
-    const productPrice = 1150;
+    const productPrice = 1150; // আপনার অফার প্রাইজ
     const total = productPrice + shipping;
     
-    // টেক্সটগুলো বাংলায় সেট করা হচ্ছে
+    // টেক্সটগুলো বাংলায় সেট করা
     document.getElementById('delivery-charge').innerText = "৳" + toBangla(shipping);
     document.getElementById('total-price').innerText = "৳" + toBangla(total);
 }
+
+// ৩. হোয়াটসঅ্যাপে অর্ডার ডাটা পাঠানোর মেইন কোড
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // পেজ রিলোড হওয়া বন্ধ করবে
+    
+    // ফরম থেকে ডাটা নেওয়া
+    let name = document.getElementById('custName').value;
+    let phone = document.getElementById('custPhone').value;
+    let address = document.getElementById('custAddress').value;
+    let shippingVal = document.querySelector('input[name="delivery"]:checked').value;
+    let deliveryArea = shippingVal == "60" ? "ঢাকার ভিতরে" : "ঢাকার বাইরে";
+    let total = document.getElementById('total-price').innerText;
+
+    // হোয়াটসঅ্যাপ মেসেজ সাজানো
+    let message = `নতুন অর্ডার এসেছে!%0A----------------------%0Aনাম: ${name}%0Aফোন: ${phone}%0Aঠিকানা: ${address}%0Aডেলিভারি এলাকা: ${deliveryArea}%0Aসর্বমোট দাম: ${total}%0A----------------------`;
+    
+    // নিচে আপনার হোয়াটসঅ্যাপ নাম্বারটি দিন (88 ছাড়া বাকি অংশ)
+    let myNumber = "8801912303037"; // এখানে আপনার সঠিক নাম্বার দিন
+    let whatsappUrl = `https://wa.me/${myNumber}?text=${message}`; 
+    
+    // নতুন ট্যাবে হোয়াটসঅ্যাপ ওপেন হবে
+    window.open(whatsappUrl, '_blank');
+});
 </script>
-
-
-
-
-
-
-
-
-
-
