@@ -202,75 +202,75 @@ function toBangla(number) {
 }
 
 // সাইট খোলার সাথে সাথে অটোমেটিক ঢাকার চার্জ ৬০ ধরে হিসাব রান করবে
-window.onload = function() {
+ window.onload = function() {
     calculateTotal(60); 
 };
- // ৩. নেটলিফাই এডমিন প্যানেলে অর্ডার পাঠানোর কোড
- document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
     let myForm = document.getElementById('checkoutForm');
     let formData = new FormData(myForm);
     
-    // শিপিং এবং টোটাল বিল ডাটাতে যোগ করা
+    // শিপিং এরিয়া এবং বিল সংগ্রহ
     let shippingVal = document.querySelector('input[name="delivery"]:checked').value;
     formData.append('Delivery_Area', (shippingVal == "60") ? "ঢাকার ভিতরে" : "ঢাকার বাইরে");
     formData.append('Total_Bill', document.getElementById('total-price').innerText);
 
-    // নেটলিফাইতে ডাটা পাঠানো
     fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData).toString(),
     })
     .then(() => {
-        // অর্ডার হওয়ার সাথে সাথে অভিনন্দন মেসেজ দেখানো
+        // অভিনন্দন মেসেজ দেখানো
         document.getElementById('success-overlay').style.display = 'flex';
         myForm.reset(); 
-
-        // ৪ সেকেন্ড পর অটোমেটিক পেজ রিফ্রেশ হবে (কাস্টমারকে কিছু চাপতে হবে না)
-        setTimeout(() => {
-            window.location.reload();
-        }, 4000); 
+        // ৪ সেকেন্ড পর অটো রিফ্রেশ
+        setTimeout(() => { window.location.reload(); }, 4000); 
     })
-    .catch(() => alert("দুঃখিত, কোনো সমস্যা হয়েছে।"));
+    .catch(() => alert("দুঃখিত, আবার চেষ্টা করুন।"));
 });
-<div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center; backdrop-filter: blur(8px);">
-    <div style="background:#fff; padding:50px; border-radius:30px; box-shadow:0 0 40px #00a884; max-width:85%; animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);">
-        <div style="font-size:80px; margin-bottom:20px;">🎉</div>
-        <h2 style="color:#00a884; font-size:32px; margin-bottom:15px;">অর্ডার সফল হয়েছে!</h2>
-        <p style="font-size:20px; color:#333; font-weight:bold;">অভিনন্দন! আপনার অর্ডারটি আমরা পেয়েছি।</p>
-        <p style="color:#666; margin-top:10px;">অল্পক্ষণের মধ্যেই আমাদের প্রতিনিধি আপনাকে কল করবেন।</p>
-        <div style="margin-top:25px; color:#00a884; font-weight:bold; font-size:14px;">অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</div>
+ }); 
+</script>
+
+<div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center; backdrop-filter: blur(8px);">
+    <div style="background:#fff; padding:40px; border-radius:30px; box-shadow:0 0 40px #00a884; max-width:85%; animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);">
+        <div style="font-size:70px; margin-bottom:15px;">🎉</div>
+        <h2 style="color:#00a884; font-size:28px; margin-bottom:10px;">অর্ডার সফল হয়েছে!</h2>
+        <p style="font-size:18px; color:#333; font-weight:bold;">অভিনন্দন! আপনার অর্ডারটি আমরা পেয়েছি।</p>
+        <p style="color:#666; margin-top:10px;">অল্পক্ষণের মধ্যেই আমাদের প্রতিনিধি কল করবেন।</p>
+        <p style="color:#00a884; margin-top:15px; font-size:14px;">অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
     </div>
 </div>
 
 <style>
-@keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+@keyframes popIn { 
+    0% { transform: scale(0); opacity: 0; } 
+    100% { transform: scale(1); opacity: 1; } 
 }
 </style>
-<footer style="background: #f8f9fa; padding: 40px 15px 10px 15px; text-align: center; margin-top: 50px; border-top: 1px solid #ddd; font-family: sans-serif; clear: both;">
-    
-    <div style="margin-bottom: 50px;">
-        <a href="https://wa.me/8801875181134" target="_blank" style="background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);">
-            💬 হোয়াটসঅ্যাপ করুন
-        </a>
-        <p style="margin-top: 15px; font-size: 16px; font-weight: bold; background: linear-gradient(90deg, #00a884, #25d366); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-             পণ্য বিডি - সবসময় আপনার পাশে
-        </p>
-    </div>
 
-    <div style="text-align: left; padding-left: 10px; border-top: 1px solid #eee; padding-top: 10px;">
-        <p style="font-size: 12px; color: #888; margin: 0;">
-            © ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত
-        </p>
+<footer style="background: #f8f9fa; padding: 40px 15px; text-align: center; border-top: 1px solid #eee; margin-top: 50px;">
+    <div style="margin-bottom: 25px;">
+        <p style="font-weight: bold; margin-bottom: 15px;">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে কথা বলুন</p>
+        <a href="https://wa.me/8801875181134" target="_blank" style="background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: bold;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
+        </a>
     </div>
+    <p style="font-size: 13px; color: #888;">© ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত</p>
 </footer>
 
+<script>
+    // সাইট খোলার সাথে সাথে অটোমেটিক ঢাকার ভাড়া সেট হবে
+    window.onload = function() {
+        if(typeof calculateTotal === "function") {
+            calculateTotal(60);
+        }
+    };
+</script>
+
 </body>
-</html> 
+</html>
 
 
 
