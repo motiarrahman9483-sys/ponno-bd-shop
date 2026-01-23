@@ -135,11 +135,11 @@
     <h3 style="text-align: center; color: #00a884;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
       <form id="checkoutForm" name="order-form" data-netlify="true">
    <input type="hidden" name="form-name" value="order-form" />
-        <input type="text" id="custName" required placeholder="আপনার নাম লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+         <input type="text" name="name" id="custName" required placeholder="আপনার নাম লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
         
-        <input type="tel" id="custPhone" required placeholder="মোবাইল নাম্বার লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
-        
-        <textarea id="custAddress" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; height: 80px;"></textarea>
+<input type="tel" name="phone" id="custPhone" required placeholder="মোবাইল নাম্বার লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+ 
+         <textarea name="address" id="custAddress" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"></textarea>
 
         <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
              <p style="font-weight: bold; margin-bottom: 10px;">ডেলিভারি কোথায় নিতে চান এলাকা নির্বাচন করুন </p>
@@ -258,5 +258,6 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
