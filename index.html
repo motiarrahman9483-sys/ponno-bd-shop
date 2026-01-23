@@ -160,4 +160,66 @@
     </a>
 </footer>
 
- 
+<script>
+// ১. ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ফাংশন
+function toBangla(number) {
+    const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+    return number.toString().replace(/\d/g, d => banglaDigits[d]);
+}
+
+// ২. অটোমেটিক দাম ক্যালকুলেশন করার ফাংশন
+function calculateTotal(shipping) {
+    const productPrice = 1150; 
+    const total = productPrice + shipping;
+    
+    // টেক্সটগুলো বাংলায় সেট করা
+    if(document.getElementById('delivery-charge')){
+        document.getElementById('delivery-charge').innerText = "৳" + toBangla(shipping);
+    }
+    if(document.getElementById('total-price')){
+        document.getElementById('total-price').innerText = "৳" + toBangla(total);
+    }
+}
+
+// ৩. হোয়াটসঅ্যাপে অর্ডার ডাটা পাঠানোর মেইন কোড
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    
+    let name = document.getElementById('custName').value;
+    let phone = document.getElementById('custPhone').value;
+    let address = document.getElementById('custAddress').value;
+    let shippingVal = document.querySelector('input[name="delivery"]:checked').value;
+    let deliveryArea = shippingVal == "60" ? "ঢাকার ভিতরে" : "ঢাকার বাইরে";
+    let total = document.getElementById('total-price').innerText;
+
+    let message = `নতুন অর্ডার এসেছে!%0A----------------------%0Aনাম: ${name}%0Aফোন: ${phone}%0Aঠিকানা: ${address}%0Aডেলিভারি এলাকা: ${deliveryArea}%0Aসর্বমোট দাম: ${total}%0A----------------------`;
+    
+    // আপনার হোয়াটসঅ্যাপ নাম্বার ০১৮৭৫১৮১১৩৪ সেট করা হলো
+    let myNumber = "8801875181134"; 
+    let whatsappUrl = `https://wa.me/${myNumber}?text=${message}`; 
+    
+    window.open(whatsappUrl, '_blank');
+});
+</script>
+
+<footer style="background: #f8f9fa; padding: 40px 15px 10px 15px; text-align: center; margin-top: 50px; border-top: 1px solid #ddd; font-family: sans-serif; clear: both;">
+    
+    <div style="margin-bottom: 50px;">
+        <a href="https://wa.me/8801875181134" target="_blank" style="background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);">
+            💬 হোয়াটসঅ্যাপ করুন
+        </a>
+        <p style="margin-top: 15px; font-size: 16px; font-weight: bold; background: linear-gradient(90deg, #00a884, #25d366); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            ২০২৬ পণ্য বিডি - সবসময় আপনার পাশে
+        </p>
+    </div>
+
+    <div style="text-align: left; padding-left: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+        <p style="font-size: 12px; color: #888; margin: 0;">
+            © ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত
+        </p>
+    </div>
+</footer>
+
+</body>
+</html> 
+
