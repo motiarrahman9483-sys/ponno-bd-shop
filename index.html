@@ -209,15 +209,15 @@ function toBangla(number) {
         calculateTotal(60); 
     }
 };
-function calculateTotal(charge) {
-    const productPrice = 990;
+ function calculateTotal(charge) {
+    const productPrice = 100050; // এখানে দাম ঠিক করে দিলাম
     const total = productPrice + charge;
 
-    // স্ক্রিনে দেখানোর জন্য
-    document.getElementById('delivery-charge').innerText = charge;
-    document.getElementById('total-price').innerText = total;
+    // স্ক্রিনে বাংলা দেখানোর জন্য (toBangla ফাংশন ব্যবহার করে)
+    document.getElementById('delivery-charge').innerText = toBangla(charge);
+    document.getElementById('total-price').innerText = toBangla(total);
 
-    // ড্যাশবোর্ডে পাঠানোর জন্য ডাটা আপডেট
+    // ড্যাশবোর্ডে ডাটা পাঠানোর জন্য (এগুলো ইংলিশেই থাকাই ভালো)
     document.getElementById('db-delivery-charge').value = charge + " টাকা";
     document.getElementById('db-total-bill').value = total + " টাকা";
 }
@@ -271,6 +271,7 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
 
 
 
