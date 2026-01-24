@@ -170,8 +170,8 @@
     </form>
 </div>
 
-<script>
- // ১. ইংরেজি সংখ্যাকে বাংলায় রূপান্তর
+ <script>
+// ১. ইংরেজি সংখ্যাকে বাংলায় রূপান্তর
 function toBangla(number) {
     const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
     return number.toString().replace(/\d/g, d => banglaDigits[d]);
@@ -195,11 +195,10 @@ function calculateTotal(charge) {
     if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
 }
 
-// ৩. ফর্ম সাবমিট হ্যান্ডলার (অর্ডার সফল হওয়ার জন্য)
+// ৩. ফর্ম সাবমিট হ্যান্ডলার
 document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const myForm = e.target;
-    const formData = new FormData(myForm);
+    const formData = new FormData(this);
 
     fetch("/", {
         method: "POST",
@@ -208,47 +207,31 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
     })
     .then(() => {
         document.getElementById('success-overlay').style.display = 'flex';
-        myForm.reset(); 
+        this.reset(); 
         setTimeout(() => { window.location.reload(); }, 4000); 
     })
     .catch(() => alert("দুঃখিত, আবার চেষ্টা করুন।"));
 });
 
-// পেজ লোড হওয়ার সময় প্রথমবার ক্যালকুলেট করা
+// পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
+</script>
 
-<div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center; backdrop-filter: blur(8px);">
-    <div style="background:#fff; padding:40px; border-radius:30px; box-shadow:0 0 40px #00a884; max-width:85%; animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);">
-        <div style="font-size:70px; margin-bottom:15px;">🎉</div>
-        <h2 style="color:#00a884; font-size:28px; margin-bottom:10px;">অর্ডার সফল হয়েছে!</h2>
-        <p style="font-size:18px; color:#333; font-weight:bold;">অভিনন্দন! আপনার অর্ডারটি আমরা পেয়েছি।</p>
-        <p style="color:#666; margin-top:10px;">অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
+<div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
+    <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
+        <div style="font-size:70px;">🎉</div>
+        <h2 style="color:#00a884;">অর্ডার সফল হয়েছে!</h2>
+        <p>অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
     </div>
 </div>
 
-<style>
-@keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-</style>
-
 <footer style="background: #f8f9fa; padding: 40px 15px; text-align: center; border-top: 1px solid #eee; margin-top: 50px;">
-    <div style="margin-bottom: 25px;">
-        <p style="font-weight: bold; margin-bottom: 15px;">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে কথা বলুন</p>
-        <a href="https://wa.me/8801875181134" target="_blank" style="background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: bold;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
-        </a>
-    </div>
-    <p style="font-size: 18px; color: #00a884; font-weight: bold; margin-bottom: 10px;">পণ্য বিডি - সবসময় আপনার পাশে</p>
-    <p style="font-size: 13px; color: #888;">© ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত</p>
+    <p style="font-weight: bold;">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে কথা বলুন</p>
+    <a href="https://wa.me/8801875181134" target="_blank" style="background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: bold;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
+    </a>
+    <p style="margin-top: 20px;">© ২০২৬ পণ্য বিডি</p>
 </footer>
-
-</body>
-</html>
-
-
-
-
-
-
 
 
 
