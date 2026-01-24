@@ -177,21 +177,20 @@ function toBangla(number) {
     return number.toString().replace(/\d/g, d => banglaDigits[d]);
 }
 
-     function calculateTotal(charge) {
-    const productPrice = 1050; // তোর পণ্যের দাম
+      function calculateTotal(charge) {
+    const productPrice = 1050; 
     const total = productPrice + charge;
 
-    // ১. সাইটে বাংলায় বিল দেখানোর জন্য
-    const deliveryDisplay = document.getElementById('delivery-charge');
-    const totalDisplay = document.getElementById('total-price');
+    const dDisplay = document.getElementById('delivery-charge');
+    const tDisplay = document.getElementById('total-price');
+    if (dDisplay) dDisplay.innerText = toBangla(charge);
+    if (tDisplay) tDisplay.innerText = toBangla(total);
 
-    if (deliveryDisplay) deliveryDisplay.innerText = toBangla(charge);
-    if (totalDisplay) totalDisplay.innerText = toBangla(total);
-
-    // ২. ড্যাশবোর্ডে ডাটা পাঠানোর জন্য আপডেট
-    const dbDelivery = document.getElementById('db-delivery-charge');
-    const dbTotal = document.getElementById('db-total-bill');
-
+    const dbD = document.getElementById('db-delivery-charge');
+    const dbT = document.getElementById('db-total-bill');
+    if (dbD) dbD.value = toBangla(charge) + " টাকা";
+    if (dbT) dbT.value = toBangla(total) + " টাকা";
+}
     if (dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
     if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
 }
@@ -256,6 +255,7 @@ function toBangla(number) {
 
 </body>
 </html>
+
 
 
 
