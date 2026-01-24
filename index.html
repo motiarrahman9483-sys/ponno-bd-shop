@@ -177,19 +177,19 @@ function toBangla(number) {
     return number.toString().replace(/\d/g, d => banglaDigits[d]);
 }
 
-  function calculateTotal(charge) {
+   function calculateTotal(charge) {
     const productPrice = 1050; 
     const total = productPrice + charge;
 
-    const dDisplay = document.getElementById('delivery-charge');
-    const tDisplay = document.getElementById('total-price');
-    if (dDisplay) dDisplay.innerText = toBangla(charge);
-    if (tDisplay) tDisplay.innerText = toBangla(total);
+    const deliveryEl = document.getElementById('delivery-charge');
+    const totalEl = document.getElementById('total-price');
+    if (deliveryEl) deliveryEl.innerText = toBangla(charge);
+    if (totalEl) totalEl.innerText = toBangla(total);
 
-    const dbD = document.getElementById('db-delivery-charge');
-    const dbT = document.getElementById('db-total-bill');
-    if (dbD) dbD.value = toBangla(charge) + " টাকা";
-    if (dbT) dbT.value = toBangla(total) + " টাকা";
+    const dbDelivery = document.getElementById('db-delivery-charge');
+    const dbTotal = document.getElementById('db-total-bill');
+    if (dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
+    if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
 }
     if (dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
     if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
@@ -255,6 +255,7 @@ function toBangla(number) {
 
 </body>
 </html>
+
 
 
 
