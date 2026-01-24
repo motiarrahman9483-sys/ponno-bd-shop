@@ -177,21 +177,24 @@ function toBangla(number) {
     return number.toString().replace(/\d/g, d => banglaDigits[d]);
 }
 
-    function calculateTotal(shipping) {
-    const priceElement = document.getElementById('product-price-display');
-    if (!priceElement) return; 
+     function calculateTotal(charge) {
+    const productPrice = 1050; // তোর পণ্যের দাম
+    const total = productPrice + charge;
 
-    const priceText = priceElement.innerText;
-    // বাংলা সংখ্যাকে ইংরেজিতে কনভার্ট করার ১০০% সঠিক ও আধুনিক নিয়ম
-    const productPrice = parseInt(priceText.replace(/[০-৯]/g, d => "0123456789"["০১২৩৪৫৬৭৮৯".indexOf(d)])) || 0;
-    
-    const total = productPrice + shipping;
+    // ১. সাইটে বাংলায় বিল দেখানোর জন্য
+    const deliveryDisplay = document.getElementById('delivery-charge');
+    const totalDisplay = document.getElementById('total-price');
 
-    // ডেলিভারি চার্জ আপডেট
-    const deliveryEl = document.getElementById('delivery-charge');
-    if (deliveryEl) {
-        deliveryEl.innerText = toBangla(shipping);
-    }
+    if (deliveryDisplay) deliveryDisplay.innerText = toBangla(charge);
+    if (totalDisplay) totalDisplay.innerText = toBangla(total);
+
+    // ২. ড্যাশবোর্ডে ডাটা পাঠানোর জন্য আপডেট
+    const dbDelivery = document.getElementById('db-delivery-charge');
+    const dbTotal = document.getElementById('db-total-bill');
+
+    if (dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
+    if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
+}
 
     // সর্বমোট দাম আপডেট
     const totalEl = document.getElementById('total-price');
@@ -253,6 +256,7 @@ function toBangla(number) {
 
 </body>
 </html>
+
 
 
 
