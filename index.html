@@ -216,7 +216,25 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
 </script>
+<script>
+    function filterCategory(category) {
+        const cards = document.querySelectorAll('.product-card');
+        const buttons = document.querySelectorAll('.tab-btn');
 
+        // বাটন কালার চেঞ্জ
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // ফিল্টারিং লজিক
+        cards.forEach(card => {
+            if (category === 'all' || card.classList.contains(category)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
         <div style="font-size:70px;">🎉</div>
@@ -242,6 +260,7 @@ calculateTotal(60);
         </p>
     </div>
 </footer>
+
 
 
 
