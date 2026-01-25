@@ -216,60 +216,99 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
 </script>
- <div id="ponyo-mega-section" style="margin: 30px 0; padding: 10px; font-family: sans-serif; clear: both;">
-
-    <div class="cat-wrapper" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
-        <button class="cat-btn active">সবগুলো</button>
-        <button class="cat-btn">পাঞ্জাবি</button>
-        <button class="cat-btn">জায়নামাজ</button>
-        <button class="cat-btn">ডিজিটাল তসবিহ</button>
-        <button class="cat-btn">টুপি</button>
-        </div>
-
-    <div class="ponyo-slider" style="display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 45%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px;">
+  <div id="smart-shop-section" style="margin: 30px 0; padding: 10px; clear: both;">
+    
+    <div class="ponyo-grid-slider">
         
-        <div class="p-card">
-            <div class="p-img">ছবি ১</div>
-            <h5>প্রোডাক্ট ১</h5>
+        <div class="p-item">
+            <div class="p-thumb">ছবি ১</div>
+            <h5>প্রোডাক্টের নাম ১</h5>
             <p>৳ ৫০০</p>
+            <a href="লিংক_এখানে" class="view-btn">View Product</a>
         </div>
 
-        <div class="p-card">
-            <div class="p-img">ছবি ২</div>
-            <h5>প্রোডাক্ট ২</h5>
+        <div class="p-item">
+            <div class="p-thumb">ছবি ২</div>
+            <h5>প্রোডাক্টের নাম ২</h5>
             <p>৳ ৬০০</p>
+            <a href="লিংক_এখানে" class="view-btn">View Product</a>
         </div>
 
-        <div class="p-card">
-            <div class="p-img">ছবি ৩</div>
-            <h5>প্রোডাক্ট ৩</h5>
+        <div class="p-item">
+            <div class="p-thumb">ছবি ৩</div>
+            <h5>প্রোডাক্টের নাম ৩</h5>
             <p>৳ ৭০০</p>
+            <a href="লিংক_এখানে" class="view-btn">View Product</a>
         </div>
 
-        <div class="p-card">
-            <div class="p-img">ছবি ৪</div>
-            <h5>প্রোডাক্ট ৪</h5>
+        <div class="p-item">
+            <div class="p-thumb">ছবি ৪</div>
+            <h5>প্রোডাক্টের নাম ৪</h5>
             <p>৳ ৮০০</p>
-        </div>
-        
-        <div class="p-card">
-            <div class="p-img">ছবি ৫</div>
-            <h5>প্রোডাক্ট ৫</h5>
-            <p>৳ ৯০০</p>
+            <a href="লিংক_এখানে" class="view-btn">View Product</a>
         </div>
 
     </div>
 </div>
 
 <style>
-    .cat-btn { padding: 6px 12px; border-radius: 5px; border: 1px solid #ccc; background: #f8f8f8; cursor: pointer; font-size: 13px; }
-    .cat-btn.active { background: #28a745; color: #fff; border-color: #28a745; }
-    .ponyo-slider::-webkit-scrollbar { display: none; } /* স্ক্রলবার লুকানোর জন্য */
-    .p-card { scroll-snap-align: start; border: 1px solid #eee; border-radius: 8px; padding: 8px; text-align: center; background: #fff; }
-    .p-img { background: #f0f0f0; height: 110px; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 12px; }
-    .p-card h5 { margin: 8px 0 4px; font-size: 14px; color: #333; }
-    .p-card p { color: #ff5722; font-weight: bold; margin: 0; font-size: 14px; }
+    /* স্লাইডার গ্রিড সেটিংস */
+    .ponyo-grid-slider {
+        display: grid;
+        grid-template-rows: repeat(2, auto); /* ২টা লাইন নিশ্চিত */
+        grid-auto-flow: column; /* কলাম অনুযায়ী ডানে বাড়বে */
+        grid-auto-columns: min-content; /* কন্টেন্ট অনুযায়ী চওড়া হবে, বাড়তি ফাঁকা থাকবে না */
+        gap: 15px;
+        overflow-x: auto;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* স্ক্রলবার লুকানোর জন্য */
+    .ponyo-grid-slider::-webkit-scrollbar { display: none; }
+
+    /* প্রতিটি প্রোডাক্ট কার্ড */
+    .p-item {
+        width: 160px; /* ফিক্সড চওড়া যাতে স্লাইড স্মুথ হয় */
+        scroll-snap-align: start;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .p-thumb {
+        background: #f4f4f4;
+        height: 120px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #888;
+        font-size: 12px;
+    }
+
+    .p-item h5 { margin: 10px 0 5px; font-size: 14px; color: #333; height: 34px; overflow: hidden; }
+    .p-item p { color: #ff5722; font-weight: bold; margin-bottom: 10px; }
+
+    /* ভিউ প্রোডাক্ট বাটন */
+    .view-btn {
+        display: block;
+        background: #28a745;
+        color: #fff;
+        text-decoration: none;
+        padding: 6px 0;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .view-btn:hover { background: #218838; }
 </style>
+<style>
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
         <div style="font-size:70px;">🎉</div>
@@ -295,6 +334,7 @@ calculateTotal(60);
         </p>
     </div>
 </footer>
+
 
 
 
