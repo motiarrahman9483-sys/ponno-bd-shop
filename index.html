@@ -216,38 +216,84 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
  </script>
-       <div style="position:relative;padding:20px;background:#f6f8ff">
+        <div class="auto-slider">
+  <div class="track">
 
-<button onclick="this.nextElementSibling.scrollLeft-=300"
-style="position:absolute;left:5px;top:45%;background:#4361ee;color:#fff;border:none;padding:10px;border-radius:50%">❮</button>
+    <!-- product -->
+    <div class="item">
+      <img src="https://via.placeholder.com/200">
+      <p>৳ ২,৫০০</p>
+    </div>
 
-<div style="display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);
-gap:15px;overflow-x:auto;scroll-behavior:smooth">
+    <div class="item">
+      <img src="https://via.placeholder.com/200">
+      <p>$25</p>
+    </div>
 
-<div style="width:180px;background:#fff;border-radius:12px;padding:10px;
-text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1)">
-<img src="https://via.placeholder.com/200" style="width:100%;border-radius:10px">
-<h4>স্মার্ট ওয়াচ</h4>
-<p style="color:#e63946;font-weight:bold">৳ ২,৫০০</p>
-<a href="#" style="display:block;background:#4361ee;color:#fff;
-padding:6px;border-radius:6px;text-decoration:none">View Product</a>
+    <div class="item">
+      <img src="https://via.placeholder.com/200">
+      <p>৳ ১,২০০</p>
+    </div>
+
+    <div class="item">
+      <img src="https://via.placeholder.com/200">
+      <p>$18</p>
+    </div>
+
+    <div class="item">
+      <img src="https://via.placeholder.com/200">
+      <p>৳ ৯৯৯</p>
+    </div>
+
+    <div class="item">
+      <img src="https://via.placeholder.com/200">
+      <p>$12</p>
+    </div>
+
+    <!-- যত খুশি item add করো -->
+
+  </div>
 </div>
 
-<div style="width:180px;background:#fff;border-radius:12px;padding:10px;
-text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1)">
-<img src="https://via.placeholder.com/200" style="width:100%;border-radius:10px">
-<h4>Bluetooth Headphone</h4>
-<p style="color:#e63946;font-weight:bold">$25</p>
-<a href="#" style="display:block;background:#4361ee;color:#fff;
-padding:6px;border-radius:6px;text-decoration:none">View Product</a>
-</div>
+<style>
+.auto-slider{
+  overflow-x:auto;
+  padding:15px;
+  -webkit-overflow-scrolling:touch;
+}
 
-</div>
+.track{
+  display:grid;
+  grid-auto-flow:column;
+  grid-template-rows:repeat(2,1fr);
+  gap:15px;
+  width:max-content;
+}
 
-<button onclick="this.previousElementSibling.scrollLeft+=300"
-style="position:absolute;right:5px;top:45%;background:#4361ee;color:#fff;border:none;padding:10px;border-radius:50%">❯</button>
+.item{
+  width:160px;
+  background:#fff;
+  border-radius:12px;
+  padding:8px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
 
-       </div>
+.item img{
+  width:100%;
+  border-radius:10px;
+}
+
+.item p{
+  margin:6px 0 0;
+  font-weight:bold;
+  color:#e63946;
+}
+
+.auto-slider::-webkit-scrollbar{
+  display:none;
+}
+</style>
        
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
@@ -274,6 +320,7 @@ style="position:absolute;right:5px;top:45%;background:#4361ee;color:#fff;border:
         </p>
     </div>
 </footer>
+
 
 
 
