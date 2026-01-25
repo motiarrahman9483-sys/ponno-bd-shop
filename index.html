@@ -216,25 +216,35 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
 </script>
-<script>
-    function filterCategory(category) {
-        const cards = document.querySelectorAll('.product-card');
-        const buttons = document.querySelectorAll('.tab-btn');
+ <div id="extra-products" style="display: block !important; margin: 30px 0; padding: 10px; background: #fff; clear: both;">
+    
+    <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px;">
+        <button style="background: #28a745; color: white; border: none; padding: 7px 15px; border-radius: 20px; white-space: nowrap;">সবগুলো</button>
+        <button style="background: #eee; color: #333; border: none; padding: 7px 15px; border-radius: 20px; white-space: nowrap;">পাঞ্জাবি</button>
+        <button style="background: #eee; color: #333; border: none; padding: 7px 15px; border-radius: 20px; white-space: nowrap;">জায়নামাজ</button>
+    </div>
 
-        // বাটন কালার চেঞ্জ
-        buttons.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+    <div style="display: grid; grid-template-rows: repeat(2, 1fr); grid-auto-flow: column; grid-auto-columns: 48%; gap: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+        
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 8px; text-align: center;">
+            <div style="background: #f9f9f9; height: 120px; border-radius: 5px; margin-bottom: 5px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999;">ছবি দিন</div>
+            <h5 style="margin: 5px 0; font-size: 13px;">পণ্যের নাম</h5>
+            <p style="color: #ff5722; font-weight: bold; margin: 0;">৳ ৫০০</p>
+        </div>
 
-        // ফিল্টারিং লজিক
-        cards.forEach(card => {
-            if (category === 'all' || card.classList.contains(category)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-</script>
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 8px; text-align: center;">
+            <div style="background: #f9f9f9; height: 120px; border-radius: 5px; margin-bottom: 5px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999;">ছবি দিন</div>
+            <h5 style="margin: 5px 0; font-size: 13px;">পণ্যের নাম</h5>
+            <p style="color: #ff5722; font-weight: bold; margin: 0;">৳ ৭০০</p>
+        </div>
+
+        <div style="border: 1px solid #eee; border-radius: 8px; padding: 8px; text-align: center;">
+            <div style="background: #f9f9f9; height: 120px; border-radius: 5px; margin-bottom: 5px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999;">ছবি দিন</div>
+            <h5 style="margin: 5px 0; font-size: 13px;">পণ্যের নাম</h5>
+            <p style="color: #ff5722; font-weight: bold; margin: 0;">৳ ৯০০</p>
+        </div>
+    </div>
+ </div>
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
         <div style="font-size:70px;">🎉</div>
@@ -260,6 +270,7 @@ calculateTotal(60);
         </p>
     </div>
 </footer>
+
 
 
 
