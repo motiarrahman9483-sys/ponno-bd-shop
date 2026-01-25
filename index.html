@@ -216,34 +216,24 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
  </script>
-   <div class="auto-slider">
+ <div class="auto-slider">
   <div class="track">
 
     <div class="item">
       <img src="https://via.placeholder.com/400">
-      <div class="info">
-        <p class="price">৳ ২,৫০০</p>
-        <a href="#" class="view-btn">View Product</a>
-      </div>
+
+      <!-- PRICE LINE -->
+      <div class="price-line">৳ ২,৫০০</div>
+
+      <!-- VIEW PRODUCT LINE -->
+      <a href="#" class="view-line">View Product</a>
     </div>
 
     <div class="item">
       <img src="https://via.placeholder.com/400">
-      <div class="info">
-        <p class="price">$25</p>
-        <a href="#" class="view-btn">View Product</a>
-      </div>
+      <div class="price-line">$25</div>
+      <a href="#" class="view-line">View Product</a>
     </div>
-
-    <div class="item">
-      <img src="https://via.placeholder.com/400">
-      <div class="info">
-        <p class="price">৳ ১,২০০</p>
-        <a href="#" class="view-btn">View Product</a>
-      </div>
-    </div>
-
-    <!-- যত খুশি item add করো -->
 
   </div>
 </div>
@@ -251,7 +241,7 @@ calculateTotal(60);
 <style>
 .auto-slider{
   overflow-x:auto;
-  padding:20px;
+  padding:16px;
   -webkit-overflow-scrolling:touch;
 }
 
@@ -259,50 +249,50 @@ calculateTotal(60);
   display:grid;
   grid-auto-flow:column;
   grid-template-rows:repeat(2,1fr);
-  gap:20px;
+  gap:18px;
   width:max-content;
 }
 
 .item{
-  width:260px;   /* 🔥 card বড় করা */
+  width:260px;
   background:#fff;
   border-radius:16px;
   box-shadow:0 6px 18px rgba(0,0,0,.12);
   overflow:hidden;
 }
 
+/* IMAGE */
 .item img{
   width:100%;
-  height:180px;  /* 🔥 image বড় */
+  height:180px;
   object-fit:cover;
 }
 
-.info{
-  padding:12px;
+/* PRICE LINE */
+.price-line{
   text-align:center;
-}
-
-.price{
-  font-size:18px;
+  font-size:17px;
   font-weight:700;
-  color:#ff006e;   /* 🔥 colourful */
+  color:#ff0054;   /* 🔥 price matching colour */
+  padding:6px 0;
+  background:#fff;
 }
 
-.view-btn{
-  display:inline-block;
-  margin-top:8px;
+/* VIEW PRODUCT LINE */
+.view-line{
+  display:block;
+  text-align:center;
+  font-size:14px;
+  padding:7px 0;
   background:linear-gradient(135deg,#4361ee,#7209b7);
   color:#fff;
-  padding:8px 14px;
-  border-radius:8px;
   text-decoration:none;
-  font-size:14px;
 }
 
 .auto-slider::-webkit-scrollbar{
   display:none;
 }
-</style>    
+</style>
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
         <div style="font-size:70px;">🎉</div>
@@ -328,6 +318,7 @@ calculateTotal(60);
         </p>
     </div>
 </footer>
+
 
 
 
