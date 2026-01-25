@@ -216,38 +216,31 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
  </script>
-        <div class="auto-slider">
+   <div class="auto-slider">
   <div class="track">
 
-    <!-- product -->
     <div class="item">
-      <img src="https://via.placeholder.com/200">
-      <p>৳ ২,৫০০</p>
+      <img src="https://via.placeholder.com/400">
+      <div class="info">
+        <p class="price">৳ ২,৫০০</p>
+        <a href="#" class="view-btn">View Product</a>
+      </div>
     </div>
 
     <div class="item">
-      <img src="https://via.placeholder.com/200">
-      <p>$25</p>
+      <img src="https://via.placeholder.com/400">
+      <div class="info">
+        <p class="price">$25</p>
+        <a href="#" class="view-btn">View Product</a>
+      </div>
     </div>
 
     <div class="item">
-      <img src="https://via.placeholder.com/200">
-      <p>৳ ১,২০০</p>
-    </div>
-
-    <div class="item">
-      <img src="https://via.placeholder.com/200">
-      <p>$18</p>
-    </div>
-
-    <div class="item">
-      <img src="https://via.placeholder.com/200">
-      <p>৳ ৯৯৯</p>
-    </div>
-
-    <div class="item">
-      <img src="https://via.placeholder.com/200">
-      <p>$12</p>
+      <img src="https://via.placeholder.com/400">
+      <div class="info">
+        <p class="price">৳ ১,২০০</p>
+        <a href="#" class="view-btn">View Product</a>
+      </div>
     </div>
 
     <!-- যত খুশি item add করো -->
@@ -258,7 +251,7 @@ calculateTotal(60);
 <style>
 .auto-slider{
   overflow-x:auto;
-  padding:15px;
+  padding:20px;
   -webkit-overflow-scrolling:touch;
 }
 
@@ -266,35 +259,50 @@ calculateTotal(60);
   display:grid;
   grid-auto-flow:column;
   grid-template-rows:repeat(2,1fr);
-  gap:15px;
+  gap:20px;
   width:max-content;
 }
 
 .item{
-  width:160px;
+  width:260px;   /* 🔥 card বড় করা */
   background:#fff;
-  border-radius:12px;
-  padding:8px;
-  text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.1);
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  overflow:hidden;
 }
 
 .item img{
   width:100%;
-  border-radius:10px;
+  height:180px;  /* 🔥 image বড় */
+  object-fit:cover;
 }
 
-.item p{
-  margin:6px 0 0;
-  font-weight:bold;
-  color:#e63946;
+.info{
+  padding:12px;
+  text-align:center;
+}
+
+.price{
+  font-size:18px;
+  font-weight:700;
+  color:#ff006e;   /* 🔥 colourful */
+}
+
+.view-btn{
+  display:inline-block;
+  margin-top:8px;
+  background:linear-gradient(135deg,#4361ee,#7209b7);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:14px;
 }
 
 .auto-slider::-webkit-scrollbar{
   display:none;
 }
-</style>
-       
+</style>    
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
         <div style="font-size:70px;">🎉</div>
@@ -320,6 +328,7 @@ calculateTotal(60);
         </p>
     </div>
 </footer>
+
 
 
 
