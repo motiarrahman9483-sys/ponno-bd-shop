@@ -216,6 +216,39 @@ document.getElementById('checkoutForm').addEventListener('submit', function(e) {
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
  </script>
+       <div style="position:relative;padding:20px;background:#f6f8ff">
+
+<button onclick="this.nextElementSibling.scrollLeft-=300"
+style="position:absolute;left:5px;top:45%;background:#4361ee;color:#fff;border:none;padding:10px;border-radius:50%">❮</button>
+
+<div style="display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);
+gap:15px;overflow-x:auto;scroll-behavior:smooth">
+
+<div style="width:180px;background:#fff;border-radius:12px;padding:10px;
+text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1)">
+<img src="https://via.placeholder.com/200" style="width:100%;border-radius:10px">
+<h4>স্মার্ট ওয়াচ</h4>
+<p style="color:#e63946;font-weight:bold">৳ ২,৫০০</p>
+<a href="#" style="display:block;background:#4361ee;color:#fff;
+padding:6px;border-radius:6px;text-decoration:none">View Product</a>
+</div>
+
+<div style="width:180px;background:#fff;border-radius:12px;padding:10px;
+text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1)">
+<img src="https://via.placeholder.com/200" style="width:100%;border-radius:10px">
+<h4>Bluetooth Headphone</h4>
+<p style="color:#e63946;font-weight:bold">$25</p>
+<a href="#" style="display:block;background:#4361ee;color:#fff;
+padding:6px;border-radius:6px;text-decoration:none">View Product</a>
+</div>
+
+</div>
+
+<button onclick="this.previousElementSibling.scrollLeft+=300"
+style="position:absolute;right:5px;top:45%;background:#4361ee;color:#fff;border:none;padding:10px;border-radius:50%">❯</button>
+
+       </div>
+       
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
         <div style="font-size:70px;">🎉</div>
@@ -241,6 +274,7 @@ calculateTotal(60);
         </p>
     </div>
 </footer>
+
 
 
 
