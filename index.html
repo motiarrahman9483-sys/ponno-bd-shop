@@ -62,3 +62,126 @@ html {
 }
 </style>
 </head>
+<body>
+<!-- DELIVERY FORM + BILL CALCULATION -->
+<div id="order-form" style="max-width: 500px; margin: 20px auto; padding: 20px; border: 2px solid #00a884; border-radius: 15px; background: #fff; font-family: sans-serif;">
+    <h3 style="text-align: center; color: #00a884;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
+    <form id="checkoutForm" name="order-form" data-netlify="true">
+        <input type="hidden" name="form-name" value="order-form" />
+        <input type="text" name="name" id="custName" required placeholder="আপনার নাম লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+        
+        <input type="tel" name="phone" id="custPhone" required placeholder="মোবাইল নাম্বার লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+ 
+        <textarea name="address" id="custAddress" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"></textarea>
+        
+        <input type="hidden" name="পণ্য_মূল্য" value="১০৫০ টাকা">
+        <input type="hidden" name="ডেলিভারি_চার্জ" id="db-delivery-charge" value="৬০ টাকা">
+        <input type="hidden" name="সর্বমোট_বিল" id="db-total-bill" value="১১১০ টাকা">
+
+        <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+            <p style="font-weight: bold; margin-bottom: 10px;">ডেলিভারি কোথায় নিতে চান এলাকা নির্বাচন করুন </p>
+            <label style="display: block; margin-bottom: 8px;">
+                <input type="radio" name="delivery" value="60" checked onclick="calculateTotal(60)"> ঢাকার ভিতরে (৳৬০)
+            </label>
+            <label style="display: block;">
+                <input type="radio" name="delivery" value="120" onclick="calculateTotal(120)"> ঢাকার বাইরে (৳১২০)
+            </label>
+        </div>
+
+        <div style="border-top: 1px dashed #ccc; padding-top: 10px; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; font-size: 18px;">
+                <span>ডেলিভারি চার্জ:</span>
+                <span id="delivery-charge">৳৬০</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 22px; font-weight: bold; margin-top: 10px;">
+                <span>সর্বমোট:</span>
+                <span id="total-price">৳১১১০</span>
+            </div>
+        </div>
+
+        <button type="submit" style="width: 100%; background: #27ae60; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 20px; font-weight: bold; cursor: pointer;">অর্ডার কনফার্ম করুন</button>
+    </form>
+</div>
+
+<!-- JS for BILL CALCULATION & FORM SUBMIT -->
+<script>
+// ১. ইংরেজি সংখ্যাকে বাংলায় রূপান্তর
+function toBangla(number) {
+    const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+    return number.toString().replace(/\d/g, d => banglaDigits[d]);
+}
+
+// ২. বিল ক্যালকুলেশন ফাংশন
+function calculateTotal(charge) {
+    const productPrice = 1050; 
+    const total = productPrice + charge;
+
+    // সাইটে বিল দেখানো
+    const deliveryEl = document.getElementById('delivery-charge');
+    const totalEl = document.getElementById('total-price');
+    if (deliveryEl) deliveryEl.innerText = "৳" + toBangla(charge);
+    if (totalEl) totalEl.innerText = "৳" + toBangla(total);
+
+    // ড্যাশবোর্ডে ডাটা আপডেট
+    const dbDelivery = document.getElementById('db-delivery-charge');
+    const dbTotal = document.getElementById('db-total-bill');
+    if (dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
+    if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
+}
+
+// ৩. ফর্ম সাবমিট হ্যান্ডলার
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+    })
+    .then(() => {
+        document.getElementById('success-overlay').style.display = 'flex';
+        this.reset(); 
+        setTimeout(() => { window.location.reload(); }, 4000); 
+    })
+    .catch(() => alert("দুঃখিত, আবার চেষ্টা করুন।"));
+});
+
+// পেজ লোড হওয়ার সময় একবার কল করা
+calculateTotal(60);
+</script>
+<!-- PART–3: Footer + Privacy + Success Overlay Fix -->
+
+<!-- Success Overlay -->
+<div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
+    <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
+        <div style="font-size:70px;">🎉</div>
+        <h2 style="color:#00a884;">অর্ডার সফল হয়েছে!</h2>
+        <p>অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer style="background: #f8f9fa; padding: 40px 15px; text-align: center; border-top: 1px solid #eee; margin-top: 50px;">
+    <div style="margin-bottom: 25px;">
+        <p style="font-weight: bold; margin-bottom: 15px;">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে কথা বলুন</p>
+        <a href="https://wa.me/8801777869483" target="_blank" style="background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: bold;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
+        </a>
+    </div>
+
+    <p style="font-size: 20px; color: #00a884; font-weight: 900; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+        পণ্য বিডি - সবসময় আপনার পাশে
+    </p>
+
+    <!-- Privacy / Terms -->
+    <div style="font-size:13px;color:#777;text-align:center;margin:15px 0">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+    </div>
+
+    <div style="text-align: left; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
+        <p style="font-size: 13px; color: #888; margin: 0;">
+            © ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত
+        </p>
+    </div>
+</footer>
