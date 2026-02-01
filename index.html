@@ -1,173 +1,64 @@
-<!DOCTYPE html>
-<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>প্লাগইন স্মার্ট কুরআন | পণ্য বিডি</title>
+<title>প্লাগইন স্মার্ট কুরআন | পণ্য বিডি</title>
 
-  <meta name="description" content="রমজানের সেরা উপহার। প্লাগইন স্মার্ট কুরআন – ক্যাশ অন ডেলিভারি সারা বাংলাদেশে।">
-  <meta name="keywords" content="Smart Quran, Quran Speaker, Islamic Gift, Ramadan Gift Bangladesh">
+<meta name="description" content="রমজানের সেরা উপহার। প্লাগইন স্মার্ট কুরআন – ক্যাশ অন ডেলিভারি সারা বাংলাদেশে।">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="প্লাগইন স্মার্ট কুরআন">
-  <meta property="og:description" content="মা-বাবার জন্য রমজানের সেরা উপহার">
-  <meta property="og:image" content="1.jpg">
-  <meta property="og:type" content="website">
+<meta name="keywords" content="Smart Quran, Quran Speaker, Islamic Gift, Ramadan Gift Bangladesh">
 
-  <style>
-    body{margin:0;font-family:Arial,sans-serif;background:#f9f9f9;color:#333}
-    .container{max-width:720px;margin:auto;background:#fff;padding:20px}
-    img{max-width:100%}
-    html{scroll-behavior:smooth}
+<!-- Facebook / WhatsApp Preview -->
+<meta property="og:title" content="প্লাগইন স্মার্ট কুরআন">
+<meta property="og:description" content="মা-বাবার জন্য রমজানের সেরা উপহার">
+<meta property="og:image" content="1.jpg">
+<meta property="og:type" content="website">
 
-    .main-img{border-radius:10px;border:1px solid #ddd}
-    .thumbs{display:flex;gap:8px;justify-content:center;margin-top:10px}
-    .thumbs img{width:65px;height:65px;object-fit:cover;border:2px solid #ccc;border-radius:6px;cursor:pointer}
-
-    .btn{background:#ff0000;color:#fff;padding:14px 28px;border-radius:50px;
-      font-size:20px;font-weight:bold;text-decoration:none;display:inline-block}
-
-    .price-box{text-align:center;border:2px solid #b71c1c;border-radius:12px;padding:15px}
-
-    footer{background:#f8f9fa;padding:35px 15px;text-align:center;margin-top:40px}
-
-    #success-overlay{
-      display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);
-      justify-content:center;align-items:center;z-index:9999
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- 🔴 HEADER -->
-<div style="background:#b71c1c;padding:25px;text-align:center;color:#fff">
-  <h1 style="margin:0;color:#ffd700">পণ্য বিডি</h1>
-  <p>সেরা পণ্যের নির্ভরযোগ্য ঠিকানা</p>
-</div>
-
-<div class="container">
-
-  <h1 style="color:#b71c1c;text-align:center">
-    🌙 প্লাগইন স্মার্ট কুরআন এখন পাচ্ছেন বিশেষ অফারে
-  </h1>
-
-  <!-- IMAGE -->
-  <img id="mainImage" src="1.jpg" class="main-img" alt="স্মার্ট কুরআন প্লাগ">
-
-  <div class="thumbs">
-    <img src="1.jpg" onclick="mainImage.src='1.jpg'">
-    <img src="2.jpg" onclick="mainImage.src='2.jpg'">
-    <img src="3.jpg" onclick="mainImage.src='3.jpg'">
-    <img src="4.png" onclick="mainImage.src='4.png'">
-    <img src="5.jpg" onclick="mainImage.src='5.jpg'">
-  </div>
-
-  <!-- PRICE -->
-  <div class="price-box" style="margin:20px 0">
-    <div style="text-decoration:line-through">আগের দাম: ১৫৫০ টাকা</div>
-    <div style="font-size:28px;color:#b71c1c;font-weight:900">
-      আজকের অফার: ১০৫০ টাকা
-    </div>
-  </div>
-
-  <div style="text-align:center">
-    <a href="#checkoutForm" class="btn">অর্ডার করতে ক্লিক করুন</a>
-  </div>
-
-  <!-- FEATURES -->
-  <h2 style="color:#d63031">প্রধান বৈশিষ্ট্য</h2>
-  <p>✅ কুরআন তেলাওয়াত, জিকির ও দু'আ লোড করা</p>
-  <p>✅ রিমোট কন্ট্রোল</p>
-  <p>✅ ব্যাটারি ছাড়াই ব্যবহার</p>
-
-  <!-- ORDER FORM -->
-  <div id="checkoutForm" style="margin-top:30px;border:2px solid #00a884;padding:20px;border-radius:15px">
-    <h3 style="text-align:center;color:#00a884">অর্ডার ফরম</h3>
-
-    <form name="order-form" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="order-form">
-      <input required name="name" placeholder="আপনার নাম" style="width:100%;padding:12px;margin-bottom:10px">
-      <input required name="phone" placeholder="মোবাইল নাম্বার" style="width:100%;padding:12px;margin-bottom:10px">
-      <textarea required name="address" placeholder="ঠিকানা" style="width:100%;padding:12px"></textarea>
-
-      <input type="hidden" name="পণ্য_মূল্য" value="১০৫০ টাকা">
-      <input type="hidden" id="db-delivery-charge" name="ডেলিভারি_চার্জ">
-      <input type="hidden" id="db-total-bill" name="সর্বমোট_বিল">
-
-      <p>
-        <label><input type="radio" checked onclick="calc(60)"> ঢাকার ভিতরে (৬০)</label><br>
-        <label><input type="radio" onclick="calc(120)"> ঢাকার বাইরে (১২০)</label>
-      </p>
-
-      <p>ডেলিভারি: <b id="delivery">৳৬০</b></p>
-      <p>সর্বমোট: <b id="total">৳১১১০</b></p>
-
-      <button class="btn" style="width:100%">অর্ডার কনফার্ম</button>
-    </form>
-  </div>
-
-</div>
-
-<!-- SUCCESS -->
-<div id="success-overlay">
-  <div style="background:#fff;padding:40px;border-radius:20px;text-align:center">
-    <h2 style="color:#00a884">🎉 অর্ডার সফল</h2>
-    <p>আমরা শীঘ্রই যোগাযোগ করব</p>
-  </div>
-</div>
-
-<footer>
-  <p>✔ ১০০% ক্যাশ অন ডেলিভারি</p>
-  <p>
-    <a href="#">Privacy Policy</a> |
-    <a href="#">Terms</a>
-  </p>
-  <p>© ২০২৬ পণ্য বিডি</p>
-</footer>
-
-<script>
-function bn(n){return n.toString().replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d])}
-function calc(c){
-  let t=1050+c
-  delivery.innerText="৳"+bn(c)
-  total.innerText="৳"+bn(t)
-  dbDeliveryCharge.value=bn(c)+" টাকা"
-  dbTotalBill.value=bn(t)+" টাকা"
+<style>
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
 }
-calc(60)
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.product-header {
+  text-align: center;
+  padding: 20px 0;
+}
+.main-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+.thumb-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.thumb {
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.thumb:hover {
+  border-color: #d63031;
+}
+html {
+  scroll-behavior: smooth;
+}
+</style>
+</head>
