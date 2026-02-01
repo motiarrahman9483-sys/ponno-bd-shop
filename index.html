@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="bn">
+<!-- PART–1: HEAD -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -5,7 +8,6 @@
 <title>প্লাগইন স্মার্ট কুরআন | পণ্য বিডি</title>
 
 <meta name="description" content="রমজানের সেরা উপহার। প্লাগইন স্মার্ট কুরআন – ক্যাশ অন ডেলিভারি সারা বাংলাদেশে।">
-
 <meta name="keywords" content="Smart Quran, Quran Speaker, Islamic Gift, Ramadan Gift Bangladesh">
 
 <!-- Facebook / WhatsApp Preview -->
@@ -15,54 +17,43 @@
 <meta property="og:type" content="website">
 
 <style>
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f9f9f9;
-  color: #333;
-}
-.container {
-  max-width: 700px;
-  margin: auto;
-  background: #fff;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-.product-header {
-  text-align: center;
-  padding: 20px 0;
-}
-.main-img {
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  margin-bottom: 15px;
-}
-.thumb-container {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-.thumb {
-  width: 65px;
-  height: 65px;
-  cursor: pointer;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  object-fit: cover;
-}
-.thumb:hover {
-  border-color: #d63031;
-}
-html {
-  scroll-behavior: smooth;
-}
+body { font-family: 'Arial', sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333; }
+.container { max-width:700px; margin:auto; background:#fff; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+.product-header { text-align:center; padding:20px 0; }
+.main-img { width:100%; border-radius:10px; border:1px solid #ddd; margin-bottom:15px; }
+.thumb-container { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.thumb { width:65px; height:65px; cursor:pointer; border:2px solid #ccc; border-radius:5px; object-fit:cover; }
+.thumb:hover { border-color:#d63031; }
+html { scroll-behavior:smooth; }
 </style>
 </head>
+
+<!-- PART–2: BODY শুরু + Delivery Form + JS -->
 <body>
+<div class="container">
+  <div class="product-header">
+      <h1 style="color: #b71c1c;">🌙 প্লাগইন স্মার্ট কুরআন এখন পাচ্ছেন বিশেষ অফারে </h1>
+  </div>
+
+  <div class="main-image-area">
+      <img id="main-frame" src="1.jpg" class="main-img" alt="Product">
+  </div>
+
+  <div class="thumb-container">
+      <img class="thumb" src="1.jpg" onclick="document.getElementById('main-frame').src='1.jpg'">
+      <img class="thumb" src="2.jpg" onclick="document.getElementById('main-frame').src='2.jpg'">
+      <img class="thumb" src="3.jpg" onclick="document.getElementById('main-frame').src='3.jpg'">
+      <img class="thumb" src="4.png" onclick="document.getElementById('main-frame').src='4.png'">
+      <img class="thumb" src="5.jpg" onclick="document.getElementById('main-frame').src='5.jpg'">
+  </div>
+  
+  <div style="background: #e3f2fd; border-left: 5px solid #2196f3; padding: 12px; margin-top: 20px; border-radius: 5px;">
+      <p style="margin: 0; color: #0d47a1; font-weight: bold; font-size: 16px;">
+          ✅ সম্পূর্ণ ক্যাশ অন ডেলিভারি: প্রোডাক্ট হাতে পেয়ে, ভালো করে চেক করে তারপর পেমেন্ট করতে পারবেন।
+      </p>
+  </div>
+</div>
+
 <!-- DELIVERY FORM + BILL CALCULATION -->
 <div id="order-form" style="max-width: 500px; margin: 20px auto; padding: 20px; border: 2px solid #00a884; border-radius: 15px; background: #fff; font-family: sans-serif;">
     <h3 style="text-align: center; color: #00a884;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
@@ -107,52 +98,46 @@ html {
 <script>
 // ১. ইংরেজি সংখ্যাকে বাংলায় রূপান্তর
 function toBangla(number) {
-    const banglaDigits = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-    return number.toString().replace(/\d/g, d => banglaDigits[d]);
+    const banglaDigits = ["০","১","২","৩","৪","৫","৬","৭","৮","৯"];
+    return number.toString().replace(/\d/g,d=>banglaDigits[d]);
 }
 
 // ২. বিল ক্যালকুলেশন ফাংশন
 function calculateTotal(charge) {
     const productPrice = 1050; 
     const total = productPrice + charge;
-
-    // সাইটে বিল দেখানো
     const deliveryEl = document.getElementById('delivery-charge');
     const totalEl = document.getElementById('total-price');
-    if (deliveryEl) deliveryEl.innerText = "৳" + toBangla(charge);
-    if (totalEl) totalEl.innerText = "৳" + toBangla(total);
-
-    // ড্যাশবোর্ডে ডাটা আপডেট
+    if(deliveryEl) deliveryEl.innerText = "৳"+toBangla(charge);
+    if(totalEl) totalEl.innerText = "৳"+toBangla(total);
     const dbDelivery = document.getElementById('db-delivery-charge');
     const dbTotal = document.getElementById('db-total-bill');
-    if (dbDelivery) dbDelivery.value = toBangla(charge) + " টাকা";
-    if (dbTotal) dbTotal.value = toBangla(total) + " টাকা";
+    if(dbDelivery) dbDelivery.value = toBangla(charge)+" টাকা";
+    if(dbTotal) dbTotal.value = toBangla(total)+" টাকা";
 }
 
 // ৩. ফর্ম সাবমিট হ্যান্ডলার
-document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+document.getElementById('checkoutForm').addEventListener('submit',function(e){
     e.preventDefault();
     const formData = new FormData(this);
-
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
+    fetch("/",{
+        method:"POST",
+        headers:{"Content-Type":"application/x-www-form-urlencoded"},
+        body:new URLSearchParams(formData).toString(),
     })
-    .then(() => {
-        document.getElementById('success-overlay').style.display = 'flex';
+    .then(()=>{
+        document.getElementById('success-overlay').style.display='flex';
         this.reset(); 
-        setTimeout(() => { window.location.reload(); }, 4000); 
+        setTimeout(()=>{window.location.reload();},4000);
     })
-    .catch(() => alert("দুঃখিত, আবার চেষ্টা করুন।"));
+    .catch(()=>alert("দুঃখিত, আবার চেষ্টা করুন।"));
 });
 
 // পেজ লোড হওয়ার সময় একবার কল করা
 calculateTotal(60);
 </script>
-<!-- PART–3: Footer + Privacy + Success Overlay Fix -->
 
-<!-- Success Overlay -->
+<!-- PART–3: Footer + Privacy + Success Overlay -->
 <div id="success-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
     <div style="background:#fff; padding:40px; border-radius:30px; max-width:85%;">
         <div style="font-size:70px;">🎉</div>
@@ -161,7 +146,6 @@ calculateTotal(60);
     </div>
 </div>
 
-<!-- Footer -->
 <footer style="background: #f8f9fa; padding: 40px 15px; text-align: center; border-top: 1px solid #eee; margin-top: 50px;">
     <div style="margin-bottom: 25px;">
         <p style="font-weight: bold; margin-bottom: 15px;">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে কথা বলুন</p>
@@ -174,7 +158,6 @@ calculateTotal(60);
         পণ্য বিডি - সবসময় আপনার পাশে
     </p>
 
-    <!-- Privacy / Terms -->
     <div style="font-size:13px;color:#777;text-align:center;margin:15px 0">
         <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
     </div>
@@ -185,3 +168,6 @@ calculateTotal(60);
         </p>
     </div>
 </footer>
+
+</body>
+</html>
