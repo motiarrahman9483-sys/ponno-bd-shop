@@ -1,135 +1,161 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>পণ্য বিডি</title>
-<style>
-body{font-family:'Arial',sans-serif;margin:0;padding:0;background:#f9f9f9;color:#333;}
-.container{max-width:700px;margin:auto;background:#fff;padding:20px;box-shadow:0 0 10px rgba(0,0,0,0.1);}
-.product-header{text-align:center;padding:20px 0;}
-.main-img{width:100%;border-radius:10px;border:1px solid #ddd;margin-bottom:15px;}
-.thumb-container{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:10px;}
-.thumb{width:65px;height:65px;cursor:pointer;border:2px solid #ccc;border-radius:5px;object-fit:cover;}
-.thumb:hover{border-color:#d63031;}
-.auto-slider{overflow-x:auto;padding:16px;-webkit-overflow-scrolling:touch;}
-.track{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);gap:18px;width:max-content;}
-.item{width:260px;background:#fff;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.12);overflow:hidden;}
-.item img{width:100%;height:180px;object-fit:cover;}
-.price-btn{margin:6px 10px 4px;padding:6px 0;text-align:center;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#ff006e,#ff7a00);border-radius:8px;}
-.view-btn{display:block;margin:0 10px 10px;padding:7px 0;text-align:center;font-size:14px;color:#fff;text-decoration:none;background:linear-gradient(135deg,#4361ee,#7209b7);border-radius:8px;}
-.auto-slider::-webkit-scrollbar{display:none;}
-@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
-@keyframes shake{0%{transform:rotate(0deg);}10%{transform:rotate(-1deg);}20%{transform:rotate(1deg);}30%{transform:rotate(0deg);}100%{transform:rotate(0deg);}}
-html{scroll-behavior:smooth;}
-footer{background:#f8f9fa;padding:40px 15px;text-align:center;border-top:1px solid #eee;margin-top:50px;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>পণ্য বিডি</title>
+  <style>
+    body { font-family: 'Arial', sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333; }
+    .container { max-width:700px; margin:auto; background:#fff; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+    .product-header { text-align:center; padding:20px 0; }
+    .main-img { width:100%; border-radius:10px; border:1px solid #ddd; margin-bottom:15px; }
+    .thumb-container { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .thumb { width:65px; height:65px; cursor:pointer; border:2px solid #ccc; border-radius:5px; object-fit:cover; }
+    .thumb:hover { border-color:#d63031; }
+
+    /* Auto-slider */
+    .auto-slider{ overflow-x:auto; padding:16px; -webkit-overflow-scrolling:touch; }
+    .track{ display:grid; grid-auto-flow:column; grid-template-rows:repeat(2,1fr); gap:18px; width:max-content; }
+    .item{ width:260px; background:#fff; border-radius:16px; box-shadow:0 6px 16px rgba(0,0,0,.12); overflow:hidden; }
+    .item img{ width:100%; height:180px; object-fit:cover; }
+    .price-btn{ margin:6px 10px 4px; padding:6px 0; text-align:center; font-size:16px; font-weight:700; color:#fff; background:linear-gradient(135deg,#ff006e,#ff7a00); border-radius:8px; }
+    .view-btn{ display:block; margin:0 10px 10px; padding:7px 0; text-align:center; font-size:14px; color:#fff; text-decoration:none; background:linear-gradient(135deg,#4361ee,#7209b7); border-radius:8px; }
+    .auto-slider::-webkit-scrollbar{ display:none; }
+
+    /* Animations */
+    @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);} }
+    @keyframes shake { 0%{transform:rotate(0deg);}10%{transform:rotate(-1deg);}20%{transform:rotate(1deg);}30%{transform:rotate(0deg);}100%{transform:rotate(0deg);} }
+    html { scroll-behavior: smooth; }
+
+    /* Footer */
+    footer { background:#f8f9fa; padding:40px 15px; text-align:center; border-top:1px solid #eee; margin-top:50px; }
+  </style>
 </head>
 <body>
 
-<!-- Banner -->
+<!-- Banner Section -->
 <div style="background:#b71c1c;border:3px solid #ffd700;padding:25px;text-align:center;border-radius:15px;margin-bottom:30px;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
-<h1 style="margin:0;font-size:35px;font-weight:900;color:#ffffff;">পণ্য বিডি</h1>
-<p style="margin:5px 0 0;font-size:14px;color:#eeeeee;font-weight:bold;">সেরা পণ্যের নির্ভরযোগ্য ঠিকানা</p>
-<h2 style="color:#ffd700;font-size:26px;font-weight:900;margin-bottom:15px;">🌙 এবারের রমজানে মা-বাবার মুখে ফুটুক প্রশান্তির হাসি...</h2>
-<p style="color:#ffffff;font-size:18px;line-height:1.8;margin:0;font-weight:700;">
-সন্তান হিসেবে আমাদের সবচেয়ে বড় সার্থকতা মা-বাবার ইবাদতকে সহজ করা। এই <span style="color:#ffd700;font-size:20px;">স্মার্ট কুরআন প্লাগ</span> উপহার দিন।
-</p>
-<div style="margin-top:20px;font-weight:800;color:#ffd700;font-size:16px;border-top:1px solid rgba(255,215,0,0.3);padding-top:10px;">
-— নেক আমলের মিছিলে সামিল হোন আজই —
-</div>
+  <h1 style="margin:0;font-size:35px;font-weight:900;color:#ffffff;">পণ্য বিডি</h1>
+  <p style="margin:5px 0 0;font-size:14px;color:#eeeeee;font-weight:bold;">সেরা পণ্যের নির্ভরযোগ্য ঠিকানা</p>
+  <h2 style="color:#ffd700;font-size:26px;font-weight:900;margin-bottom:15px;">🌙 এবারের রমজানে মা-বাবার মুখে ফুটুক প্রশান্তির হাসি...</h2>
+  <p style="color:#ffffff;font-size:18px;line-height:1.8;margin:0;font-weight:700;">
+    সন্তান হিসেবে আমাদের সবচেয়ে বড় সার্থকতা মা-বাবার ইবাদতকে সহজ করা। এই <span style="color:#ffd700;font-size:20px;">স্মার্ট কুরআন প্লাগ</span> উপহার দিন।
+  </p>
+  <div style="margin-top:20px;font-weight:800;color:#ffd700;font-size:16px;border-top:1px solid rgba(255,215,0,0.3);padding-top:10px;">
+    — নেক আমলের মিছিলে সামিল হোন আজই —
+  </div>
 </div>
 
-<!-- Product -->
+<!-- Product Section -->
 <div class="container">
-<div class="product-header">
-<h1 style="color:#b71c1c;">🌙 প্লাগইন স্মার্ট কুরআন এখন পাচ্ছেন বিশেষ অফারে</h1>
+  <div class="product-header">
+    <h1 style="color:#b71c1c;">🌙 প্লাগইন স্মার্ট কুরআন এখন পাচ্ছেন বিশেষ অফারে</h1>
+  </div>
+
+  <div class="main-image-area">
+    <img id="main-frame" src="https://via.placeholder.com/600x400.png?text=Main+Product" class="main-img" alt="Product">
+  </div>
+
+  <div class="thumb-container">
+    <img class="thumb" src="https://via.placeholder.com/100x100.png?text=1" onclick="document.getElementById('main-frame').src='https://via.placeholder.com/600x400.png?text=1'">
+    <img class="thumb" src="https://via.placeholder.com/100x100.png?text=2" onclick="document.getElementById('main-frame').src='https://via.placeholder.com/600x400.png?text=2'">
+    <img class="thumb" src="https://via.placeholder.com/100x100.png?text=3" onclick="document.getElementById('main-frame').src='https://via.placeholder.com/600x400.png?text=3'">
+    <img class="thumb" src="https://via.placeholder.com/100x100.png?text=4" onclick="document.getElementById('main-frame').src='https://via.placeholder.com/600x400.png?text=4'">
+    <img class="thumb" src="https://via.placeholder.com/100x100.png?text=5" onclick="document.getElementById('main-frame').src='https://via.placeholder.com/600x400.png?text=5'">
+  </div>
 </div>
 
-<div class="main-image-area">
-<img id="main-frame" src="images/1.jpg" class="main-img" alt="Product">
-</div>
-
-<div class="thumb-container">
-<img class="thumb" src="images/1.jpg" onclick="document.getElementById('main-frame').src='images/1.jpg'">
-<img class="thumb" src="images/2.jpg" onclick="document.getElementById('main-frame').src='images/2.jpg'">
-<img class="thumb" src="images/3.jpg" onclick="document.getElementById('main-frame').src='images/3.jpg'">
-<img class="thumb" src="images/4.png" onclick="document.getElementById('main-frame').src='images/4.png'">
-<img class="thumb" src="images/5.jpg" onclick="document.getElementById('main-frame').src='images/5.jpg'">
-</div>
-</div>
-
-<!-- Order Form -->
+<!-- Order Form + Total -->
 <div id="order-form" style="max-width:500px;margin:20px auto;padding:20px;border:2px solid #00a884;border-radius:15px;background:#fff;font-family:sans-serif;">
-<h3 style="text-align:center;color:#00a884;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
-<form id="checkoutForm" name="order-form" data-netlify="true">
-<input type="hidden" name="form-name" value="order-form" />
-<input type="text" name="name" id="custName" required placeholder="আপনার নাম লিখুন" style="width:100%;padding:12px;margin-bottom:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
-<input type="tel" name="phone" id="custPhone" required placeholder="মোবাইল নাম্বার লিখুন" style="width:100%;padding:12px;margin-bottom:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
-<textarea name="address" id="custAddress" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" style="width:100%;padding:12px;margin-bottom:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;"></textarea>
+  <h3 style="text-align:center;color:#00a884;">অর্ডার করতে নিচের ফরমটি পূরণ করুন</h3>
+  <form id="checkoutForm" name="order-form" data-netlify="true">
+    <input type="hidden" name="form-name" value="order-form" />
+    <input type="text" name="name" id="custName" required placeholder="আপনার নাম লিখুন" style="width:100%;padding:12px;margin-bottom:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
+    <input type="tel" name="phone" id="custPhone" required placeholder="মোবাইল নাম্বার লিখুন" style="width:100%;padding:12px;margin-bottom:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;">
+    <textarea name="address" id="custAddress" required placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন" style="width:100%;padding:12px;margin-bottom:10px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;"></textarea>
+    <input type="hidden" name="পণ্য_মূল্য" value="১০৫০ টাকা">
+    <input type="hidden" name="ডেলিভারি_চার্জ" id="db-delivery-charge" value="৬০ টাকা">
+    <input type="hidden" name="সর্বমোট_বিল" id="db-total-bill" value="১১১০ টাকা">
 
-<input type="hidden" name="পণ্য_মূল্য" value="১০৫০ টাকা">
-<input type="hidden" name="ডেলিভারি_চার্জ" id="db-delivery-charge" value="৬০ টাকা">
-<input type="hidden" name="সর্বমোট_বিল" id="db-total-bill" value="১১১০ টাকা">
+    <div style="background:#f9f9f9;padding:15px;border-radius:10px;margin-bottom:15px;">
+      <p style="font-weight:bold;margin-bottom:10px;">ডেলিভারি কোথায় নিতে চান এলাকা নির্বাচন করুন</p>
+      <label style="display:block;margin-bottom:8px;">
+        <input type="radio" name="delivery" value="60" checked onclick="calculateTotal(60)"> ঢাকার ভিতরে (৳৬০)
+      </label>
+      <label style="display:block;">
+        <input type="radio" name="delivery" value="120" onclick="calculateTotal(120)"> ঢাকার বাইরে (৳১২০)
+      </label>
+    </div>
 
-<div style="background:#f9f9f9;padding:15px;border-radius:10px;margin-bottom:15px;">
-<p style="font-weight:bold;margin-bottom:10px;">ডেলিভারি কোথায় নিতে চান এলাকা নির্বাচন করুন</p>
-<label style="display:block;margin-bottom:8px;">
-<input type="radio" name="delivery" value="60" checked onclick="calculateTotal(60)"> ঢাকার ভিতরে (৳৬০)
-</label>
-<label style="display:block;">
-<input type="radio" name="delivery" value="120" onclick="calculateTotal(120)"> ঢাকার বাইরে (৳১২০)
-</label>
-</div>
+    <div style="border-top:1px dashed #ccc;padding-top:10px;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;font-size:18px;">
+        <span>ডেলিভারি চার্জ:</span>
+        <span id="delivery-charge">৳৬০</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:22px;font-weight:bold;margin-top:10px;">
+        <span>সর্বমোট:</span>
+        <span id="total-price">০</span>
+      </div>
+    </div>
 
-<div style="border-top:1px dashed #ccc;padding-top:10px;margin-bottom:20px;">
-<div style="display:flex;justify-content:space-between;font-size:18px;">
-<span>ডেলিভারি চার্জ:</span>
-<span id="delivery-charge">৳৬০</span>
-</div>
-<div style="display:flex;justify-content:space-between;font-size:22px;font-weight:bold;margin-top:10px;">
-<span>সর্বমোট:</span>
-<span id="total-price">০</span>
-</div>
-</div>
-
-<button type="submit" style="width:100%;background:#27ae60;color:white;padding:15px;border:none;border-radius:10px;font-size:20px;font-weight:bold;cursor:pointer;">অর্ডার কনফার্ম করুন</button>
-</form>
+    <button type="submit" style="width:100%;background:#27ae60;color:white;padding:15px;border:none;border-radius:10px;font-size:20px;font-weight:bold;cursor:pointer;">অর্ডার কনফার্ম করুন</button>
+  </form>
 </div>
 
 <!-- Success Overlay -->
 <div id="success-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;justify-content:center;align-items:center;flex-direction:column;text-align:center;display:flex;">
-<div style="background:#fff;padding:40px;border-radius:30px;max-width:85%;">
-<div style="font-size:70px;">🎉</div>
-<h2 style="color:#00a884;">অর্ডার সফল হয়েছে!</h2>
-<p>অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
-</div>
+  <div style="background:#fff;padding:40px;border-radius:30px;max-width:85%;">
+    <div style="font-size:70px;">🎉</div>
+    <h2 style="color:#00a884;">অর্ডার সফল হয়েছে!</h2>
+    <p>অপেক্ষা করুন, পেজটি অটো রিফ্রেশ হচ্ছে...</p>
+  </div>
 </div>
 
-<!-- Auto Slider -->
+<!-- Auto-slider -->
 <div class="auto-slider">
-<div class="track">
-<div class="item"><img src="images/1.jpg"><div class="price-btn">৳ ২,৫০০</div><a href="#" class="view-btn">View Product</a></div>
-<div class="item"><img src="images/2.jpg"><div class="price-btn">৳ ১,৯৯৯</div><a href="#" class="view-btn">View Product</a></div>
-<div class="item"><img src="images/3.jpg"><div class="price-btn">৳ ১,৫০০</div><a href="#" class="view-btn">View Product</a></div>
-<div class="item"><img src="images/4.png"><div class="price-btn">৳ ৯৯৯</div><a href="#" class="view-btn">View Product</a></div>
-</div>
+  <div class="track">
+    <div class="item">
+      <img src="https://via.placeholder.com/400x300.png?text=Product1">
+      <div class="price-btn">৳ ২,৫০০</div>
+      <a href="#" class="view-btn">View Product</a>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/400x300.png?text=Product2">
+      <div class="price-btn">৳ ১,৯৯৯</div>
+      <a href="#" class="view-btn">View Product</a>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/400x300.png?text=Product3">
+      <div class="price-btn">৳ ১,৫০০</div>
+      <a href="#" class="view-btn">View Product</a>
+    </div>
+    <div class="item">
+      <img src="https://via.placeholder.com/400x300.png?text=Product4">
+      <div class="price-btn">৳ ৯৯৯</div>
+      <a href="#" class="view-btn">View Product</a>
+    </div>
+  </div>
 </div>
 
 <!-- Footer -->
 <footer>
-<div style="margin-bottom:25px;">
-<p style="font-weight:bold;margin-bottom:15px;">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে কথা বলুন</p>
-<a href="https://wa.me/8801777869483" target="_blank" style="background:#25d366;color:white;padding:12px 25px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;font-weight:bold;">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
-</a>
-</div>
-<p style="font-size:20px;color:#00a884;font-weight:900;margin-bottom:15px;text-shadow:1px 1px 2px rgba(0,0,0,0.1);">পণ্য বিডি - সবসময় আপনার পাশে</p>
-<div style="text-align:left;margin-top:20px;border-top:1px solid #ddd;padding-top:10px;">
-<p style="font-size:13px;color:#888;margin:0;">© ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত</p>
-</div>
+  <div style="margin-bottom:25px;">
+    <p style="font-weight:bold;margin-bottom:15px;">যেকোনো প্রয়োজনে সরাসরি আমাদের সাথে কথা বলুন</p>
+    <a href="https://wa.me/8801777869483" target="_blank" style="background:#25d366;color:white;padding:12px 25px;border-radius:50px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;font-weight:bold;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" height="22"> হোয়াটসঅ্যাপ করুন
+    </a>
+  </div>
+  <p style="font-size:20px;color:#00a884;font-weight:900;margin-bottom:15px;text-shadow:1px 1px 2px rgba(0,0,0,0.1);">
+    পণ্য বিডি - সবসময় আপনার পাশে
+  </p>
+  <div style="text-align:left;margin-top:20px;border-top:1px solid #ddd;padding-top:10px;">
+    <p style="font-size:13px;color:#888;margin:0;">
+      © ২০২৬ পণ্য বিডি - সর্বস্বত্ব সংরক্ষিত
+    </p>
+  </div>
 </footer>
 
+<!-- JS Scripts -->
 <script>
 function toBangla(number){const banglaDigits=["০","১","২","৩","৪","৫","৬","৭","৮","৯"];return number.toString().replace(/\d/g,d=>banglaDigits[d]);}
 function calculateTotal(charge){const productPrice=1050;const total=productPrice+charge;const deliveryEl=document.getElementById('delivery-charge');const totalEl=document.getElementById('total-price');if(deliveryEl) deliveryEl.innerText="৳"+toBangla(charge);if(totalEl) totalEl.innerText="৳"+toBangla(total);const dbDelivery=document.getElementById('db-delivery-charge');const dbTotal=document.getElementById('db-total-bill');if(dbDelivery) dbDelivery.value=toBangla(charge)+" টাকা";if(dbTotal) dbTotal.value=toBangla(total)+" টাকা";}
@@ -138,4 +164,5 @@ calculateTotal(60);
 </script>
 
 </body>
-</html>
+  </html>
+                            
